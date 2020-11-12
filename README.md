@@ -7,7 +7,7 @@ Developed with
 - [TypeScript](https://www.typescriptlang.org/)
 - [NestJS](https://nestjs.com/)
 - [GraphQL](https://graphql.org/)
-- [Prisma] (https://www.prisma.io/)
+- [Prisma](https://www.prisma.io/)
 - [PassportJS](http://www.passportjs.org/)
 
 ## Installation
