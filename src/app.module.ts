@@ -6,6 +6,7 @@ import config from './configs/config'
 import { GraphqlConfig } from './configs/config.interface'
 import { AppController } from './controllers/app.controller'
 import { AppResolver } from './resolvers/app.resolver'
+import { AuthModule } from './resolvers/auth/auth.module'
 import { UserModule } from './resolvers/user/user.module'
 import { AppService } from './services/app.service'
 
@@ -29,7 +30,8 @@ import { AppService } from './services/app.service'
       },
       inject: [ConfigService]
     }),
-    UserModule
+    UserModule,
+    AuthModule
   ],
   controllers: [AppController],
   providers: [AppService, AppResolver]
