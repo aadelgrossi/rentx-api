@@ -2,11 +2,11 @@ import { Module } from '@nestjs/common'
 import { ConfigModule, ConfigService } from '@nestjs/config'
 import { GraphQLModule } from '@nestjs/graphql'
 
-import { AppController } from './app.controller'
 import config from './configs/config'
 import { GraphqlConfig } from './configs/config.interface'
+import { AppController } from './controllers/app.controller'
 import { AppResolver } from './resolvers/app.resolver'
-// import { UserModule } from './resolvers/user/user.module'
+import { UserModule } from './resolvers/user/user.module'
 import { AppService } from './services/app.service'
 
 @Module({
@@ -28,8 +28,8 @@ import { AppService } from './services/app.service'
         }
       },
       inject: [ConfigService]
-    })
-    // UserModule
+    }),
+    UserModule
   ],
   controllers: [AppController],
   providers: [AppService, AppResolver]
