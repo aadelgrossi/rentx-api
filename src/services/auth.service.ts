@@ -1,9 +1,16 @@
-import { ConflictException, Injectable } from '@nestjs/common'
+import {
+  BadRequestException,
+  ConflictException,
+  Injectable,
+  NotFoundException
+} from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
 import { JwtService } from '@nestjs/jwt'
 import { PrismaClientKnownRequestError } from '@prisma/client'
 import { SecurityConfig } from 'src/configs/config.interface'
 import { Token } from 'src/models/token.model'
+import { User } from 'src/models/user.model'
+import { SigninInput } from 'src/resolvers/auth/dto/signin.input'
 import { SignupInput } from 'src/resolvers/auth/dto/signup.input'
 
 import { PasswordService } from './password.service'
@@ -46,9 +53,30 @@ export class AuthService {
     }
   }
 
-  // async login(email: string, password: string): Promise<Token> {}
+  async login({ email, password }: SigninInput): Promise<Token> {
+    const user = await this.prisma.user.findOne({ where: { email } })
 
-  // validateUser(userId: string): Promise<User> {}
+    if (!user) {
+      throw new NotFoundException(`No user found with email ${email}`)
+    }
+
+    const passwordValid = await this.passwordService.validatePassword(
+      password,
+      user.password
+    )
+
+    if (!passwordValid) {
+      throw new BadRequestException('Invalid passowrd')
+    }
+
+    return this.generateToken({
+      userId: user.id
+    })
+  }
+
+  validateUser(userId: string): Promise<User> {
+    return this.prisma.user.findOne({ where: { id: userId } })
+  }
 
   // getUserFromToken(token: string): Promise<User> {}
 
