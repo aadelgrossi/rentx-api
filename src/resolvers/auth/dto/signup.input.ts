@@ -13,8 +13,8 @@ export class SignupInput {
   password: string
 
   @Field()
-  firstName?: string
+  firstName: string
 
   @Field()
-  lastName?: string
+  lastName: string
 }
