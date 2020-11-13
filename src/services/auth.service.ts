@@ -2,7 +2,8 @@ import {
   BadRequestException,
   ConflictException,
   Injectable,
-  NotFoundException
+  NotFoundException,
+  UnauthorizedException
 } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
 import { JwtService } from '@nestjs/jwt'
@@ -94,5 +95,15 @@ export class AuthService {
     }
   }
 
-  // refreshToken(token: string): {}
+  refreshToken(token: string) {
+    try {
+      const { userId } = this.jwtService.verify(token)
+
+      return this.generateToken({
+        userId
+      })
+    } catch (error) {
+      throw new UnauthorizedException()
+    }
+  }
 }
