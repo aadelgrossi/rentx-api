@@ -1,3 +1,4 @@
+/* eslint-disable dot-notation */
 import {
   BadRequestException,
   ConflictException,
@@ -79,7 +80,10 @@ export class AuthService {
     return this.prisma.user.findOne({ where: { id: userId } })
   }
 
-  // getUserFromToken(token: string): Promise<User> {}
+  getUserFromToken(token: string): Promise<User> {
+    const id = this.jwtService.decode(token)['userId']
+    return this.prisma.user.findOne({ where: { id } })
+  }
 
   generateToken(payload: Record<string, unknown>): Token {
     const accessToken = this.jwtService.sign(payload)

@@ -1,4 +1,4 @@
-import { Args, Mutation, Resolver } from '@nestjs/graphql'
+import { Args, Mutation, Parent, ResolveField, Resolver } from '@nestjs/graphql'
 import { Auth } from 'src/models/auth.model'
 import { Token } from 'src/models/token.model'
 import { AuthService } from 'src/services/auth.service'
@@ -33,5 +33,10 @@ export class AuthResolver {
   @Mutation(() => Token)
   async refreshToken(@Args('token') token: string) {
     return this.auth.refreshToken(token)
+  }
+
+  @ResolveField('user')
+  async user(@Parent() auth: Auth) {
+    return await this.auth.getUserFromToken(auth.accessToken)
   }
 }
