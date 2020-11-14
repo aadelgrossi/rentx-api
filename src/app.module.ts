@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common'
 import { ConfigModule, ConfigService } from '@nestjs/config'
 import { GraphQLModule } from '@nestjs/graphql'
 
+import { DateScalar } from './common/date.scalar'
 import config from './configs/config'
 import { GraphqlConfig } from './configs/config.interface'
 import { AppController } from './controllers/app.controller'
@@ -34,6 +35,6 @@ import { AppService } from './services/app.service'
     AuthModule
   ],
   controllers: [AppController],
-  providers: [AppService, AppResolver]
+  providers: [AppService, AppResolver, DateScalar]
 })
 export class AppModule {}
