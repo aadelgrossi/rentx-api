@@ -3,7 +3,7 @@
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url = "***"
 }
 
 generator client {
@@ -32,5 +32,5 @@ model Car {
   brandId    String
   brand      CarBrand @relation(fields: [brandId], references: [id])
   year       Int
-  dailyRate  Int
+  dailyRate  Float
 }
