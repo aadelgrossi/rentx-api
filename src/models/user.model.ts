@@ -8,10 +8,10 @@ export class User extends BaseModel {
   email: string
 
   @Field()
-  firstName?: string
+  firstName: string
 
   @Field()
-  lastName?: string
+  lastName: string
 
   @Field({ defaultValue: false })
   admin: boolean

@@ -5,6 +5,7 @@
 type Auth {
   accessToken: String!
   refreshToken: String!
+  user: User!
 }
 
 input ChangePasswordInput {
@@ -19,6 +20,7 @@ scalar DateTime
 
 type Mutation {
   changePassword(data: ChangePasswordInput!): User!
+  refreshToken(token: String!): Token!
   signin(data: SigninInput!): Auth!
   signup(data: SignupInput!): Auth!
   updateUser(data: UpdateUserInput!): User!
@@ -40,6 +42,11 @@ input SignupInput {
   firstName: String!
   lastName: String!
   password: String!
+}
+
+type Token {
+  accessToken: String!
+  refreshToken: String!
 }
 
 input UpdateUserInput {
