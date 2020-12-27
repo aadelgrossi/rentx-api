@@ -8,23 +8,76 @@ type Auth {
   user: User!
 }
 
+type Car {
+  createdAt: Date!
+  dailyRate: Int!
+  fuelType: FuelType!
+  id: ID!
+  manufacturer: CarManufacturer!
+  name: String!
+  photo: Photo!
+  transmission: Transmission!
+  updatedAt: Date!
+}
+
+type CarManufacturer {
+  createdAt: Date!
+  id: ID!
+  name: String!
+  updatedAt: Date!
+}
+
 input ChangePasswordInput {
   newPassword: String!
   oldPassword: String!
 }
 
+input CreateCarInput {
+  dailyRate: Int!
+  fuelType: String!
+  manufacturer: CreateManufacturerInput!
+  name: String!
+  photo: CreatePhotoInput!
+  transmission: String!
+}
+
+input CreateManufacturerInput {
+  name: String!
+}
+
+input CreatePhotoInput {
+  url: String!
+}
+
 """Date custom scalar type"""
 scalar Date
 
+"""Allowed fuel types for car"""
+enum FuelType {
+  electric
+  gas
+  hybrid
+}
+
 type Mutation {
   changePassword(data: ChangePasswordInput!): User!
+  createCar(data: CreateCarInput!): Car!
   refreshToken(token: String!): Token!
   signin(data: SigninInput!): Auth!
   signup(data: SignupInput!): Auth!
   updateUser(data: UpdateUserInput!): User!
 }
 
+type Photo {
+  createdAt: Date!
+  id: ID!
+  updatedAt: Date!
+  url: String!
+}
+
 type Query {
+  car(id: String!): Car
+  cars: [Car!]!
   hello(name: String!): String!
   helloWorld: String!
   users: [User!]!
@@ -37,8 +90,7 @@ input SigninInput {
 
 input SignupInput {
   email: String!
-  firstName: String!
-  lastName: String!
+  name: String!
   password: String!
 }
 
@@ -47,17 +99,21 @@ type Token {
   refreshToken: String!
 }
 
+"""Allowed transmission modes for car"""
+enum Transmission {
+  auto
+  manual
+}
+
 input UpdateUserInput {
-  firstName: String
-  lastName: String
+  name: String
 }
 
 type User {
   admin: Boolean!
   createdAt: Date!
   email: String!
-  firstName: String!
   id: ID!
-  lastName: String!
+  name: String!
   updatedAt: Date!
 }
