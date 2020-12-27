@@ -1,6 +1,5 @@
 import { Field, ObjectType } from '@nestjs/graphql'
-
-import { BaseModel } from './base.model'
+import { BaseModel } from 'src/models'
 
 @ObjectType()
 export class CarManufacturer extends BaseModel {

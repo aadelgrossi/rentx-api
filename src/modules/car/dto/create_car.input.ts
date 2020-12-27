@@ -1,6 +1,6 @@
 import { InputType, Field } from '@nestjs/graphql'
 
-import { Transmission, FuelType } from '../../../models/car.model'
+import { Transmission, FuelType } from '../models/car.model'
 import { CreateManufacturerInput } from './create_manufacturer.input'
 import { CreatePhotoInput } from './create_photo.input'
 

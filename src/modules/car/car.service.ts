@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common'
 import { Car, CarWhereUniqueInput } from '@prisma/client'
-import { CreateCarInput } from 'src/resolvers/car/dto/create_car.input'
 
-import { PrismaService } from './prisma.service'
+import { PrismaService } from '../../services'
+import { CreateCarInput } from './dto'
 
 @Injectable()
 export class CarService {
