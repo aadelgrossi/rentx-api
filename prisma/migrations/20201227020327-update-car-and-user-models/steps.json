@@ -1,0 +1,304 @@
+{
+  "version": "0.3.14-fixed",
+  "steps": [
+    {
+      "tag": "CreateEnum",
+      "enum": "FuelType",
+      "values": [
+        "gas",
+        "electric",
+        "hybrid"
+      ]
+    },
+    {
+      "tag": "CreateEnum",
+      "enum": "Transmission",
+      "values": [
+        "auto",
+        "manual"
+      ]
+    },
+    {
+      "tag": "CreateModel",
+      "model": "CarManufacturer"
+    },
+    {
+      "tag": "CreateField",
+      "model": "CarManufacturer",
+      "field": "id",
+      "type": "String",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "CarManufacturer",
+          "field": "id"
+        },
+        "directive": "id"
+      }
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "CarManufacturer",
+          "field": "id"
+        },
+        "directive": "default"
+      }
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "CarManufacturer",
+          "field": "id"
+        },
+        "directive": "default"
+      },
+      "argument": "",
+      "value": "cuid()"
+    },
+    {
+      "tag": "CreateField",
+      "model": "CarManufacturer",
+      "field": "name",
+      "type": "String",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "CarManufacturer",
+          "field": "name"
+        },
+        "directive": "unique"
+      }
+    },
+    {
+      "tag": "CreateModel",
+      "model": "Photo"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Photo",
+      "field": "id",
+      "type": "String",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "Photo",
+          "field": "id"
+        },
+        "directive": "id"
+      }
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "Photo",
+          "field": "id"
+        },
+        "directive": "default"
+      }
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "Photo",
+          "field": "id"
+        },
+        "directive": "default"
+      },
+      "argument": "",
+      "value": "cuid()"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Photo",
+      "field": "url",
+      "type": "String",
+      "arity": "Required"
+    },
+    {
+      "tag": "DeleteModel",
+      "model": "CarBrand"
+    },
+    {
+      "tag": "CreateField",
+      "model": "User",
+      "field": "name",
+      "type": "String",
+      "arity": "Required"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "User",
+      "field": "firstName"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "User",
+      "field": "lastName"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Car",
+      "field": "name",
+      "type": "String",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Car",
+      "field": "manufacturerId",
+      "type": "String",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Car",
+      "field": "manufacturer",
+      "type": "CarManufacturer",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "Car",
+          "field": "manufacturer"
+        },
+        "directive": "relation"
+      }
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "Car",
+          "field": "manufacturer"
+        },
+        "directive": "relation"
+      },
+      "argument": "fields",
+      "value": "[manufacturerId]"
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "Car",
+          "field": "manufacturer"
+        },
+        "directive": "relation"
+      },
+      "argument": "references",
+      "value": "[id]"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Car",
+      "field": "photoId",
+      "type": "String",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Car",
+      "field": "photo",
+      "type": "Photo",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "Car",
+          "field": "photo"
+        },
+        "directive": "relation"
+      }
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "Car",
+          "field": "photo"
+        },
+        "directive": "relation"
+      },
+      "argument": "fields",
+      "value": "[photoId]"
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "Car",
+          "field": "photo"
+        },
+        "directive": "relation"
+      },
+      "argument": "references",
+      "value": "[id]"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Car",
+      "field": "fuelType",
+      "type": "FuelType",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Car",
+      "field": "transmission",
+      "type": "Transmission",
+      "arity": "Required"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "Car",
+      "field": "model"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "Car",
+      "field": "brandId"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "Car",
+      "field": "brand"
+    }
+  ]
+}

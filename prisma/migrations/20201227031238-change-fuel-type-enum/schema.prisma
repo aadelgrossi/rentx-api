@@ -3,7 +3,7 @@
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url = "***"
 }
 
 generator client {
@@ -23,9 +23,9 @@ model User {
 }
 
 enum FuelType {
-  gas
-  electric
-  hybrid
+  GAS
+  ELECTRIC
+  HYBRID
 }
 
 enum Transmission {
@@ -50,8 +50,8 @@ model Photo {
 model Car {
   id                  String @id @default(cuid())
   name                String
-  manufacturerId      String
-  manufacturer        CarManufacturer @relation(fields: [manufacturerId], references: [id])
+  manufacturerId      String?
+  manufacturer        CarManufacturer? @relation(fields: [manufacturerId], references: [id])
   dailyRate           Int
   photoId             String?
   photo               Photo? @relation(fields: [photoId], references: [id])

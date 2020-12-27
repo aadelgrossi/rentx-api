@@ -1,0 +1,58 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "postgresql"
+  url = "***"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String
+  password  String
+  admin Boolean @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+enum FuelType {
+  gas
+  electric
+  hybrid
+}
+
+enum Transmission {
+  auto
+  manual
+}
+
+model CarManufacturer {
+  id        String @id @default(cuid())
+  name      String @unique
+}
+
+model Photo {
+  id        String @id @default(cuid())
+  url       String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Car {
+  id                String @id @default(cuid())
+  name              String
+  manufacturerId    String
+  manufacturer      CarManufacturer @relation(fields: [manufacturerId], references: [id])
+  dailyRate         Int
+  photoId           String
+  photo             Photo @relation(fields: [photoId], references: [id])
+  fuelType          FuelType
+  transmission      Transmission
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

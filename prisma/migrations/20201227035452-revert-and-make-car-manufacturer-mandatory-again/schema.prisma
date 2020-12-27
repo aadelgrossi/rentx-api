@@ -3,7 +3,7 @@
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url = "***"
 }
 
 generator client {
@@ -23,14 +23,14 @@ model User {
 }
 
 enum FuelType {
-  gas
-  electric
-  hybrid
+  GAS
+  ELECTRIC
+  HYBRID
 }
 
 enum Transmission {
-  auto
-  manual
+  AUTO
+  MANUAL
 }
 
 model CarManufacturer {

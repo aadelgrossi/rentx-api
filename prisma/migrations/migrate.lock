@@ -3,3 +3,16 @@
 20201111234053-create-users
 20201114003152-create-car-brand-and-car
 20201114003825-change-daily-rate-to-int
+20201227020327-update-car-and-user-models
+20201227022549-add-avatar-field-to-user-and-timestamps-to-other-models
+20201227022610-remove-year-attribute
+20201227030445-make-relations-optional
+20201227031238-change-fuel-type-enum
+20201227031451-change-transmission-enum-to-uppercase
+20201227035426
+20201227035452-revert-and-make-car-manufacturer-mandatory-again
+20201227051622-make-manufacturer-optional
+20201227160950-revert-manufacturer-optional--change-enums-to-lower
+20201227170316-make-carmanufacturer-optional-again
+20201227171943
+20201227172130-keep-manufacturer-mandatory
