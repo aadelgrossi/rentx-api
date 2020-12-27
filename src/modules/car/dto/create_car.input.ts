@@ -1,8 +1,11 @@
 import { InputType, Field } from '@nestjs/graphql'
 
 import { Transmission, FuelType } from '../models/car.model'
-import { CreateManufacturerInput } from './create_manufacturer.input'
-import { CreatePhotoInput } from './create_photo.input'
+import {
+  CreateManufacturerInput,
+  CreatePhotoInput,
+  CreateSpecificationInput
+} from './'
 
 @InputType()
 export class CreateCarInput {
@@ -18,9 +21,12 @@ export class CreateCarInput {
   @Field()
   transmission: Transmission
 
-  @Field()
+  @Field(() => CreateManufacturerInput)
   manufacturer: CreateManufacturerInput
 
-  @Field()
+  @Field(() => CreatePhotoInput, { nullable: true })
   photo?: CreatePhotoInput
+
+  @Field(() => [CreateSpecificationInput], { nullable: true })
+  specifications?: [CreateSpecificationInput]
 }

@@ -31,6 +31,12 @@ export class CarService {
     return await this.prisma.car.create({
       data: {
         ...data,
+        specifications: {
+          create: data.specifications.map(spec => ({
+            name: spec.name,
+            value: spec.value
+          }))
+        },
         manufacturer: {
           connectOrCreate: {
             where: { name: data.manufacturer.name },

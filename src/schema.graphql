@@ -47,7 +47,8 @@ input CreateCarInput {
   fuelType: String!
   manufacturer: CreateManufacturerInput!
   name: String!
-  photo: CreatePhotoInput!
+  photo: CreatePhotoInput
+  specifications: [CreateSpecificationInput!]
   transmission: String!
 }
 
@@ -57,6 +58,11 @@ input CreateManufacturerInput {
 
 input CreatePhotoInput {
   url: String!
+}
+
+input CreateSpecificationInput {
+  name: String!
+  value: String!
 }
 
 """Date custom scalar type"""
