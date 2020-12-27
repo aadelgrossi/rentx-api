@@ -1,15 +1,46 @@
-import { ObjectType } from '@nestjs/graphql'
+import { Field, ObjectType, registerEnumType } from '@nestjs/graphql'
 
 import { BaseModel } from './base.model'
-import { CarBrand } from './car_brand.model'
+import { CarManufacturer } from './car_manufacturer.model'
+import { Photo } from './photo.model'
+
+export enum FuelType {
+  gas = 'gas',
+  electric = 'electric',
+  hybrid = 'hybrid'
+}
+export enum Transmission {
+  auto = 'auto',
+  manual = 'manual'
+}
+
+registerEnumType(FuelType, {
+  name: 'FuelType',
+  description: 'Allowed fuel types for car'
+})
+
+registerEnumType(Transmission, {
+  name: 'Transmission',
+  description: 'Allowed transmission modes for car'
+})
 
 @ObjectType()
 export class Car extends BaseModel {
-  model: string
+  @Field()
+  name: string
 
-  brand: CarBrand
+  @Field(() => CarManufacturer)
+  manufacturer?: CarManufacturer
 
-  year: number
-
+  @Field()
   dailyRate: number
+
+  @Field(() => Photo)
+  photo?: Photo
+
+  @Field(() => FuelType)
+  fuelType: string
+
+  @Field(() => Transmission)
+  transmission: string
 }
