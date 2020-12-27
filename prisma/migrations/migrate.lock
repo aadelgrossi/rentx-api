@@ -16,3 +16,7 @@
 20201227170316-make-carmanufacturer-optional-again
 20201227171943
 20201227172130-keep-manufacturer-mandatory
+20201227190020-create-car-spec-model-and-default-enum-values
+20201227190136
+20201227190158-create-car-spec-model-and-default-enum-values
+20201227190644-make-car-relation-and-foreign-key-mandatory
