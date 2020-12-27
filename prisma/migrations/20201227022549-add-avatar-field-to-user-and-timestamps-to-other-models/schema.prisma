@@ -3,7 +3,7 @@
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url = "***"
 }
 
 generator client {
@@ -15,8 +15,8 @@ model User {
   email               String   @unique
   name                String
   password            String
-  avatarId            String?
-  avatar              Photo? @relation(fields: [avatarId], references: [id])     
+  avatarId            String
+  avatar              Photo @relation(fields: [avatarId], references: [id])     
   admin               Boolean @default(false)
   createdAt           DateTime @default(now())
   updatedAt           DateTime @updatedAt
@@ -52,9 +52,10 @@ model Car {
   name                String
   manufacturerId      String
   manufacturer        CarManufacturer @relation(fields: [manufacturerId], references: [id])
+  year                Int
   dailyRate           Int
-  photoId             String?
-  photo               Photo? @relation(fields: [photoId], references: [id])
+  photoId             String
+  photo               Photo @relation(fields: [photoId], references: [id])
   fuelType            FuelType
   transmission        Transmission
   createdAt DateTime  @default(now())

@@ -1,0 +1,19 @@
+{
+  "version": "0.3.14-fixed",
+  "steps": [
+    {
+      "tag": "UpdateEnum",
+      "enum": "FuelType",
+      "createdValues": [
+        "GAS",
+        "ELECTRIC",
+        "HYBRID"
+      ],
+      "deletedValues": [
+        "gas",
+        "electric",
+        "hybrid"
+      ]
+    }
+  ]
+}

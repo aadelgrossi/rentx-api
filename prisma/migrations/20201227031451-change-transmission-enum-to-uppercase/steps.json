@@ -1,0 +1,17 @@
+{
+  "version": "0.3.14-fixed",
+  "steps": [
+    {
+      "tag": "UpdateEnum",
+      "enum": "Transmission",
+      "createdValues": [
+        "AUTO",
+        "MANUAL"
+      ],
+      "deletedValues": [
+        "auto",
+        "manual"
+      ]
+    }
+  ]
+}

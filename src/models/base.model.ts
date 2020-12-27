@@ -2,7 +2,7 @@ import { Field, ObjectType, ID } from '@nestjs/graphql'
 
 @ObjectType({ isAbstract: true })
 export abstract class BaseModel {
-  @Field(type => ID)
+  @Field(() => ID)
   id: string
 
   @Field()

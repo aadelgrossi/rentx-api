@@ -1,0 +1,41 @@
+{
+  "version": "0.3.14-fixed",
+  "steps": [
+    {
+      "tag": "UpdateField",
+      "model": "User",
+      "field": "avatarId",
+      "arity": "Optional"
+    },
+    {
+      "tag": "UpdateField",
+      "model": "User",
+      "field": "avatar",
+      "arity": "Optional"
+    },
+    {
+      "tag": "UpdateField",
+      "model": "Car",
+      "field": "manufacturerId",
+      "arity": "Optional"
+    },
+    {
+      "tag": "UpdateField",
+      "model": "Car",
+      "field": "manufacturer",
+      "arity": "Optional"
+    },
+    {
+      "tag": "UpdateField",
+      "model": "Car",
+      "field": "photoId",
+      "arity": "Optional"
+    },
+    {
+      "tag": "UpdateField",
+      "model": "Car",
+      "field": "photo",
+      "arity": "Optional"
+    }
+  ]
+}
