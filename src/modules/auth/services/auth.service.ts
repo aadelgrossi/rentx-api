@@ -10,13 +10,12 @@ import { ConfigService } from '@nestjs/config'
 import { JwtService } from '@nestjs/jwt'
 import { PrismaClientKnownRequestError } from '@prisma/client'
 import { SecurityConfig } from 'src/configs/config.interface'
-import { Token } from 'src/models/token.model'
-import { User } from 'src/models/user.model'
-import { SigninInput } from 'src/resolvers/auth/dto/signin.input'
-import { SignupInput } from 'src/resolvers/auth/dto/signup.input'
+import { PrismaService } from 'src/services'
 
+import { User } from '../../user/user.model'
+import { SigninInput, SignupInput } from '../dto'
+import { Token } from '../models'
 import { PasswordService } from './password.service'
-import { PrismaService } from './prisma.service'
 
 @Injectable()
 export class AuthService {
