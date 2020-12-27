@@ -1,16 +1,14 @@
 import { BadRequestException, Injectable } from '@nestjs/common'
 import {
   User,
-  UserCreateInput,
   UserOrderByInput,
   UserWhereInput,
   UserWhereUniqueInput
 } from '@prisma/client'
-import { ChangePasswordInput } from 'src/resolvers/user/dto/change-password.input'
-import { UpdateUserInput } from 'src/resolvers/user/dto/update-user.input'
 
-import { PasswordService } from './password.service'
-import { PrismaService } from './prisma.service'
+import { PrismaService } from '../../services/prisma.service'
+import { PasswordService } from '../auth/services/password.service'
+import { ChangePasswordInput, UpdateUserInput } from './dto'
 
 @Injectable()
 export class UserService {
@@ -39,12 +37,6 @@ export class UserService {
       cursor,
       where,
       orderBy
-    })
-  }
-
-  async createUser(data: UserCreateInput): Promise<User> {
-    return this.prisma.user.create({
-      data
     })
   }
 
