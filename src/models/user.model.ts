@@ -8,10 +8,7 @@ export class User extends BaseModel {
   email: string
 
   @Field()
-  firstName: string
-
-  @Field()
-  lastName: string
+  name: string
 
   @Field({ defaultValue: false })
   admin: boolean
