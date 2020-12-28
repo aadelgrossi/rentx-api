@@ -16,6 +16,7 @@ type Car {
   manufacturer: CarManufacturer!
   name: String!
   photo: Photo!
+  specifications: [CarSpecification!]
   transmission: Transmission!
   updatedAt: Date!
 }
@@ -25,6 +26,15 @@ type CarManufacturer {
   id: ID!
   name: String!
   updatedAt: Date!
+}
+
+type CarSpecification {
+  car: Car!
+  createdAt: Date!
+  id: ID!
+  name: Specification!
+  updatedAt: Date!
+  value: String!
 }
 
 input ChangePasswordInput {
@@ -37,7 +47,8 @@ input CreateCarInput {
   fuelType: String!
   manufacturer: CreateManufacturerInput!
   name: String!
-  photo: CreatePhotoInput!
+  photo: CreatePhotoInput
+  specifications: [CreateSpecificationInput!]
   transmission: String!
 }
 
@@ -47,6 +58,11 @@ input CreateManufacturerInput {
 
 input CreatePhotoInput {
   url: String!
+}
+
+input CreateSpecificationInput {
+  name: String!
+  value: String!
 }
 
 """Date custom scalar type"""
@@ -78,8 +94,6 @@ type Photo {
 type Query {
   car(id: String!): Car
   cars: [Car!]!
-  hello(name: String!): String!
-  helloWorld: String!
   users: [User!]!
 }
 
@@ -92,6 +106,14 @@ input SignupInput {
   email: String!
   name: String!
   password: String!
+}
+
+"""Allowed specifications for Car"""
+enum Specification {
+  acceleration
+  hp
+  person
+  speed
 }
 
 type Token {
@@ -111,6 +133,7 @@ input UpdateUserInput {
 
 type User {
   admin: Boolean!
+  avatar: Photo!
   createdAt: Date!
   email: String!
   id: ID!

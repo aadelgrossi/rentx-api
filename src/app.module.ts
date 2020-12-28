@@ -5,12 +5,8 @@ import { GraphQLModule } from '@nestjs/graphql'
 import { DateScalar } from './common/date.scalar'
 import config from './configs/config'
 import { GraphqlConfig } from './configs/config.interface'
-import { AppController } from './controllers/app.controller'
-import { AppResolver } from './resolvers/app.resolver'
-import { AuthModule } from './resolvers/auth/auth.module'
-import { CarModule } from './resolvers/car/car.module'
-import { UserModule } from './resolvers/user/user.module'
-import { AppService } from './services/app.service'
+import { AuthModule, CarModule, UserModule } from './modules'
+import { AppService } from './services'
 
 @Module({
   imports: [
@@ -36,7 +32,6 @@ import { AppService } from './services/app.service'
     AuthModule,
     CarModule
   ],
-  controllers: [AppController],
-  providers: [AppService, AppResolver, DateScalar]
+  providers: [AppService, DateScalar]
 })
 export class AppModule {}

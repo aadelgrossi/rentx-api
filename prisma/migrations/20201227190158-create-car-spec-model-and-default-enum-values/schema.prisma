@@ -3,7 +3,7 @@
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url = "***"
 }
 
 generator client {
@@ -73,6 +73,6 @@ model CarSpec {
   id                  String @id @default(cuid())
   name                Spec
   value               String
-  carId               String
-  car                 Car @relation(fields: [carId], references: [id])
+  carId               String?
+  car                 Car? @relation(fields: [carId], references: [id])
 }
