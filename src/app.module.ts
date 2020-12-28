@@ -5,7 +5,7 @@ import { GraphQLModule } from '@nestjs/graphql'
 import { DateScalar } from './common/date.scalar'
 import config from './configs/config'
 import { GraphqlConfig } from './configs/config.interface'
-import { AuthModule, CarModule, UserModule } from './modules'
+import { AuthModule, CarModule, UserModule, RentalModule } from './modules'
 import { AppService } from './services'
 
 @Module({
@@ -30,7 +30,8 @@ import { AppService } from './services'
     }),
     UserModule,
     AuthModule,
-    CarModule
+    CarModule,
+    RentalModule
   ],
   providers: [AppService, DateScalar]
 })

@@ -60,6 +60,13 @@ input CreatePhotoInput {
   url: String!
 }
 
+input CreateRentalInput {
+  carId: String!
+  endDate: String!
+  startDate: String!
+  userId: String!
+}
+
 input CreateSpecificationInput {
   name: String!
   value: String!
@@ -78,6 +85,7 @@ enum FuelType {
 type Mutation {
   changePassword(data: ChangePasswordInput!): User!
   createCar(data: CreateCarInput!): Car!
+  createRental(data: CreateRentalInput!): Rental!
   refreshToken(token: String!): Token!
   signin(data: SigninInput!): Auth!
   signup(data: SignupInput!): Auth!
@@ -94,7 +102,18 @@ type Photo {
 type Query {
   car(id: String!): Car
   cars: [Car!]!
+  getRentalsForUser(id: String!): [Rental!]!
   users: [User!]!
+}
+
+type Rental {
+  car: Car!
+  createdAt: Date!
+  endDate: Date!
+  id: ID!
+  startDate: Date!
+  updatedAt: Date!
+  user: User!
 }
 
 input SigninInput {
@@ -138,5 +157,6 @@ type User {
   email: String!
   id: ID!
   name: String!
+  rentals: Rental!
   updatedAt: Date!
 }
