@@ -20,3 +20,5 @@
 20201227190136
 20201227190158-create-car-spec-model-and-default-enum-values
 20201227190644-make-car-relation-and-foreign-key-mandatory
+20201228023605-create-rentals-and-associations
+20201228031513-add-missing-timestamps-to-rental

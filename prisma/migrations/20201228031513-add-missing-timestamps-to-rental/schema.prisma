@@ -3,13 +3,14 @@
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url = "***"
 }
 
 generator client {
   provider = "prisma-client-js"
   previewFeatures = ["uncheckedScalarInputs"]
 }
+
 
 model User {
   id                  String   @id @default(cuid())
