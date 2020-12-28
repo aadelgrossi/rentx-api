@@ -19,7 +19,6 @@ export class RentalService {
   async create(payload: CreateRentalInput): Promise<Rental> {
     return await this.prisma.rental.create({
       data: {
-        ...payload,
         carId: payload.carId,
         userId: payload.userId,
         startDate: new Date(payload.startDate),
