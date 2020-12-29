@@ -8,9 +8,9 @@ import {
 } from '@nestjs/graphql'
 import { PrismaService } from 'src/services'
 
-import { CarService } from './car.service'
-import { CreateCarInput } from './dto'
-import { Car } from './models'
+import { CarService } from '../car.service'
+import { CreateCarInput } from '../dto'
+import { Car } from '../models'
 
 @Resolver(() => Car)
 export class CarResolver {

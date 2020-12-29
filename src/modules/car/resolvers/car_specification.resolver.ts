@@ -1,7 +1,7 @@
 import { Parent, ResolveField, Resolver } from '@nestjs/graphql'
 import { PrismaService } from 'src/services'
 
-import { CarSpecification } from './models'
+import { CarSpecification } from '../models'
 
 @Resolver(() => CarSpecification)
 export class CarSpecificationResolver {
