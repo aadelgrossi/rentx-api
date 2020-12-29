@@ -26,3 +26,4 @@
 20201229015105-remodel-specifications-from-enum-to-table
 20201229020225-revert-old-migrations-and-update-several-models-at-once
 20201229025107-add-flag-in-specification-to-indicate-whether-icon-name-should-be-value-instead-of-name
+20201229170458-remove-full-name-computed-field-from-schema
