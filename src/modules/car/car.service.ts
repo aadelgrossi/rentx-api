@@ -1,10 +1,12 @@
 import { Injectable } from '@nestjs/common'
 import { Car, CarWhereUniqueInput } from '@prisma/client'
+import { UserInputError } from 'apollo-server-express'
 
 import { PrismaService } from '../../services'
 import {
   CreateCarInput,
   CreateManufacturerInput,
+  CreatePhotoInput,
   CreateSpecificationInput
 } from './dto'
 
@@ -35,25 +37,38 @@ export class CarService {
   async createCar({
     manufacturer,
     specifications,
-    model,
     photo,
     ...payload
   }: CreateCarInput): Promise<Car> {
+    const requiredSpecsIncluded = specifications.filter(
+      s =>
+        s.name.toLowerCase() === 'transmission' ||
+        s.name.toLowerCase() === 'fueltype'
+    ).length
+
+    if (requiredSpecsIncluded < 2) {
+      throw new UserInputError(
+        'Must include Transmission and Fuel Type specifications'
+      )
+    }
+
     return await this.prisma.car.create({
       data: {
         ...payload,
-        model,
         specifications: buildSpecifications(specifications),
         manufacturer: buildManufacturer(manufacturer),
-        photo: {
-          create: {
-            url: photo.url
-          }
-        }
+        photo: buildPhoto(photo)
       }
     })
   }
 }
+
+const buildPhoto = (photo: CreatePhotoInput) => ({
+  create: {
+    url: photo.url
+  }
+})
+
 const buildSpecifications = (specifications: CreateSpecificationInput[]) => ({
   create: specifications.map(spec => ({
     specification: {

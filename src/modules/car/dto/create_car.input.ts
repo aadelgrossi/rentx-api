@@ -1,4 +1,5 @@
 import { InputType, Field } from '@nestjs/graphql'
+import { ArrayMinSize } from 'class-validator'
 
 import {
   CreateManufacturerInput,
@@ -17,6 +18,7 @@ export class CreateCarInput {
   @Field(() => CreatePhotoInput, { nullable: true })
   photo?: CreatePhotoInput
 
+  @ArrayMinSize(2)
   @Field(() => [CreateSpecificationInput], { nullable: true })
   specifications?: [CreateSpecificationInput]
 }
