@@ -1,12 +1,23 @@
-import { Args, Mutation, Query, Resolver } from '@nestjs/graphql'
+import {
+  Args,
+  Mutation,
+  Parent,
+  Query,
+  ResolveField,
+  Resolver
+} from '@nestjs/graphql'
+import { PrismaService } from 'src/services'
 
 import { CarService } from './car.service'
 import { CreateCarInput } from './dto'
-import { Car } from './models/car.model'
+import { Car } from './models'
 
 @Resolver(() => Car)
 export class CarResolver {
-  constructor(private readonly carService: CarService) {}
+  constructor(
+    private readonly carService: CarService,
+    private readonly prisma: PrismaService
+  ) {}
 
   @Query(() => Car, { nullable: true })
   async car(@Args('id') id: string): Promise<Car> {
@@ -21,5 +32,32 @@ export class CarResolver {
   @Mutation(() => Car)
   async createCar(@Args('data') data: CreateCarInput): Promise<Car> {
     return this.carService.createCar(data)
+  }
+
+  @ResolveField('manufacturer')
+  async manufacturer(@Parent() { id }: Car) {
+    return await this.prisma.car
+      .findOne({
+        where: { id }
+      })
+      .manufacturer()
+  }
+
+  @ResolveField('specifications')
+  async specifications(@Parent() { id }: Car) {
+    return await this.prisma.car
+      .findOne({
+        where: { id }
+      })
+      .specifications()
+  }
+
+  @ResolveField('photo')
+  async photo(@Parent() { id }: Car) {
+    return await this.prisma.car
+      .findOne({
+        where: { id }
+      })
+      .photo()
   }
 }
