@@ -8,13 +8,10 @@ import {
 
 @InputType()
 export class CreateCarInput {
-  @Field()
   model: string
 
-  @Field()
   dailyRate: number
 
-  @Field(() => CreateManufacturerInput)
   manufacturer: CreateManufacturerInput
 
   @Field(() => CreatePhotoInput, { nullable: true })
