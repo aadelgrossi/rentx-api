@@ -11,13 +11,12 @@ type Auth {
 type Car {
   createdAt: Date!
   dailyRate: Int!
-  fuelType: FuelType!
+  fullName: String
   id: ID!
-  manufacturer: CarManufacturer!
-  name: String!
-  photo: Photo!
+  manufacturer: CarManufacturer
+  model: String!
+  photo: Photo
   specifications: [CarSpecification!]
-  transmission: Transmission!
   updatedAt: Date!
 }
 
@@ -29,10 +28,10 @@ type CarManufacturer {
 }
 
 type CarSpecification {
-  car: Car!
+  car: Car
   createdAt: Date!
   id: ID!
-  name: Specification!
+  specification: Specification
   updatedAt: Date!
   value: String!
 }
@@ -44,12 +43,10 @@ input ChangePasswordInput {
 
 input CreateCarInput {
   dailyRate: Int!
-  fuelType: String!
   manufacturer: CreateManufacturerInput!
-  name: String!
+  model: String!
   photo: CreatePhotoInput
   specifications: [CreateSpecificationInput!]
-  transmission: String!
 }
 
 input CreateManufacturerInput {
@@ -68,19 +65,14 @@ input CreateRentalInput {
 }
 
 input CreateSpecificationInput {
+  icon: String
+  isIconValue: Boolean!
   name: String!
   value: String!
 }
 
 """Date custom scalar type"""
 scalar Date
-
-"""Allowed fuel types for car"""
-enum FuelType {
-  electric
-  gas
-  hybrid
-}
 
 type Mutation {
   changePassword(data: ChangePasswordInput!): User!
@@ -107,13 +99,13 @@ type Query {
 }
 
 type Rental {
-  car: Car!
+  car: Car
   createdAt: Date!
   endDate: Date!
   id: ID!
   startDate: Date!
   updatedAt: Date!
-  user: User!
+  user: User
 }
 
 input SigninInput {
@@ -127,23 +119,18 @@ input SignupInput {
   password: String!
 }
 
-"""Allowed specifications for Car"""
-enum Specification {
-  acceleration
-  hp
-  person
-  speed
+type Specification {
+  createdAt: Date!
+  icon: String!
+  id: ID!
+  isIconValue: Boolean!
+  name: String!
+  updatedAt: Date!
 }
 
 type Token {
   accessToken: String!
   refreshToken: String!
-}
-
-"""Allowed transmission modes for car"""
-enum Transmission {
-  auto
-  manual
 }
 
 input UpdateUserInput {
@@ -152,11 +139,11 @@ input UpdateUserInput {
 
 type User {
   admin: Boolean!
-  avatar: Photo!
+  avatar: Photo
   createdAt: Date!
   email: String!
   id: ID!
   name: String!
-  rentals: Rental!
+  rentals: Rental
   updatedAt: Date!
 }
