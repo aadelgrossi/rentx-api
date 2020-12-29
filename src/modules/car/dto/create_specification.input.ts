@@ -8,5 +8,5 @@ export class CreateSpecificationInput {
   icon?: string
 
   @Field(() => Boolean, { defaultValue: false })
-  isIconValue: boolean
+  isIconValue?: boolean
 }
