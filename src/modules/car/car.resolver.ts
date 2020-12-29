@@ -60,4 +60,9 @@ export class CarResolver {
       })
       .photo()
   }
+
+  @ResolveField('fullName')
+  async fullName(@Parent() car: Car) {
+    return `${car.manufacturer.name} ${car.model}`
+  }
 }
