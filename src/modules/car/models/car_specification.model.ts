@@ -1,24 +1,12 @@
-import { Field, ObjectType, registerEnumType } from '@nestjs/graphql'
+import { Field, ObjectType } from '@nestjs/graphql'
 import { BaseModel } from 'src/models'
 
-import { Car } from './car.model'
-
-export enum Specification {
-  speed = 'speed',
-  acceleration = 'acceleration',
-  hp = 'hp',
-  person = 'person'
-}
-
-registerEnumType(Specification, {
-  name: 'Specification',
-  description: 'Allowed specifications for Car'
-})
+import { Car, Specification } from './'
 
 @ObjectType()
 export class CarSpecification extends BaseModel {
   @Field(() => Specification)
-  name: Specification
+  specification: Specification
 
   @Field(() => Car)
   car: Car
