@@ -28,10 +28,10 @@ type CarManufacturer {
 }
 
 type CarSpecification {
-  car: Car
+  car: Car!
   createdAt: Date!
   id: ID!
-  specification: Specification
+  specification: Specification!
   updatedAt: Date!
   value: String!
 }
@@ -66,7 +66,7 @@ input CreateRentalInput {
 
 input CreateSpecificationInput {
   icon: String
-  isIconValue: Boolean!
+  isIconValue: Boolean = false
   name: String!
   value: String!
 }
@@ -123,7 +123,7 @@ type Specification {
   createdAt: Date!
   icon: String!
   id: ID!
-  isIconValue: Boolean!
+  isIconValue: Boolean
   name: String!
   updatedAt: Date!
 }
@@ -144,6 +144,6 @@ type User {
   email: String!
   id: ID!
   name: String!
-  rentals: Rental
+  rentals: [Rental!]
   updatedAt: Date!
 }
