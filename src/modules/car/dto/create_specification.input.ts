@@ -1,12 +1,15 @@
 import { InputType, Field } from '@nestjs/graphql'
-
-import { Specification } from '../models'
-
 @InputType()
 export class CreateSpecificationInput {
   @Field()
-  name: Specification
+  name: string
 
   @Field()
   value: string
+
+  @Field()
+  icon?: string
+
+  @Field(() => Boolean, { defaultValue: false })
+  isIconValue: boolean
 }

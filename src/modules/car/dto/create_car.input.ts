@@ -1,6 +1,5 @@
 import { InputType, Field } from '@nestjs/graphql'
 
-import { Transmission, FuelType } from '../models/car.model'
 import {
   CreateManufacturerInput,
   CreatePhotoInput,
@@ -10,16 +9,10 @@ import {
 @InputType()
 export class CreateCarInput {
   @Field()
-  name: string
+  model: string
 
   @Field()
   dailyRate: number
-
-  @Field()
-  fuelType: FuelType
-
-  @Field()
-  transmission: Transmission
 
   @Field(() => CreateManufacturerInput)
   manufacturer: CreateManufacturerInput
