@@ -8,6 +8,7 @@ datasource db {
 
 generator client {
   provider = "prisma-client-js"
+  previewFeatures = ["uncheckedScalarInputs"]
 }
 
 model User {
@@ -22,22 +23,14 @@ model User {
   updatedAt           DateTime @updatedAt
 }
 
-enum FuelType {
-  gas
-  electric
-  hybrid
-}
-
-enum Transmission {
-  auto
-  manual
-}
-
-enum Spec {
-	speed
-	acceleration
-	hp
-	person
+model Specification {
+  id                  String @id @default(cuid())
+  name                String @unique
+  icon                String
+  isIconValue         Boolean @default(false)
+  cars                CarSpecification[]
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
 }
 
 model CarManufacturer {
@@ -56,23 +49,37 @@ model Photo {
 
 model Car {
   id                  String @id @default(cuid())
-  name                String
+  model               String
   manufacturerId      String
   manufacturer        CarManufacturer @relation(fields: [manufacturerId], references: [id])
   dailyRate           Int
   photoId             String?
   photo               Photo? @relation(fields: [photoId], references: [id])
-  fuelType            FuelType
-  transmission        Transmission
+  specifications      CarSpecification[]
+  fullName            String?
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
-  specifications      CarSpec[]
 }
 
-model CarSpec {
+model CarSpecification {
   id                  String @id @default(cuid())
-  name                Spec
+  specificationId     String
+  specification       Specification @relation(fields: [specificationId], references: [id])
+  carId               String
+  car                 Car @relation(fields: [carId], references: [id])
   value               String
-  carId               String?
-  car                 Car? @relation(fields: [carId], references: [id])
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Rental {
+  id                  String @id @default(cuid())
+  carId               String
+  car                 Car @relation(fields: [carId], references: [id])
+  userId              String
+  user                User @relation(fields: [userId], references: [id])
+  startDate           DateTime
+  endDate             DateTime
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
 }
