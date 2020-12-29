@@ -5,9 +5,7 @@ export abstract class BaseModel {
   @Field(() => ID)
   id: string
 
-  @Field()
   createdAt: Date
 
-  @Field()
   updatedAt: Date
 }
