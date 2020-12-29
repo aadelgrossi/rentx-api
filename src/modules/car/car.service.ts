@@ -45,7 +45,6 @@ export class CarService {
         model,
         specifications: buildSpecifications(specifications),
         manufacturer: buildManufacturer(manufacturer),
-        fullName: `${manufacturer.name} ${model}`,
         photo: {
           create: {
             url: photo.url
