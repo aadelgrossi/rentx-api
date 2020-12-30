@@ -113,7 +113,6 @@ type Rental {
   createdAt: DateTime!
   endDate: DateTime!
   id: ID!
-  past: Boolean
   startDate: DateTime!
   updatedAt: DateTime!
   user: User
