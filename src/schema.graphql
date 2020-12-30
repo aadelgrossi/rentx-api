@@ -20,6 +20,14 @@ type Car {
   updatedAt: Date!
 }
 
+input CarFilterArgs {
+  fuelType: String
+  fullName: String
+  maxDailyRate: Int
+  minDailyRate: Int
+  transmission: String
+}
+
 type CarManufacturer {
   createdAt: Date!
   id: ID!
@@ -93,7 +101,7 @@ type Photo {
 
 type Query {
   car(id: String!): Car
-  cars: [Car!]!
+  cars(filter: CarFilterArgs): [Car!]!
   getRentalsForUser(id: String!): [Rental!]!
   users: [User!]!
 }
