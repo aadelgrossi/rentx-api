@@ -9,7 +9,7 @@ type Auth {
 }
 
 type Car {
-  createdAt: Date!
+  createdAt: DateTime!
   dailyRate: Int!
   fullName: String
   id: ID!
@@ -17,7 +17,7 @@ type Car {
   model: String!
   photo: Photo
   specifications: [CarSpecification!]
-  updatedAt: Date!
+  updatedAt: DateTime!
 }
 
 input CarFilterArgs {
@@ -29,18 +29,18 @@ input CarFilterArgs {
 }
 
 type CarManufacturer {
-  createdAt: Date!
+  createdAt: DateTime!
   id: ID!
   name: String!
-  updatedAt: Date!
+  updatedAt: DateTime!
 }
 
 type CarSpecification {
   car: Car!
-  createdAt: Date!
+  createdAt: DateTime!
   id: ID!
   specification: Specification!
-  updatedAt: Date!
+  updatedAt: DateTime!
   value: String!
 }
 
@@ -67,8 +67,8 @@ input CreatePhotoInput {
 
 input CreateRentalInput {
   carId: String!
-  endDate: String!
-  startDate: String!
+  endDate: DateTime!
+  startDate: DateTime!
   userId: String!
 }
 
@@ -79,8 +79,10 @@ input CreateSpecificationInput {
   value: String!
 }
 
-"""Date custom scalar type"""
-scalar Date
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
 
 type Mutation {
   changePassword(data: ChangePasswordInput!): User!
@@ -93,9 +95,9 @@ type Mutation {
 }
 
 type Photo {
-  createdAt: Date!
+  createdAt: DateTime!
   id: ID!
-  updatedAt: Date!
+  updatedAt: DateTime!
   url: String!
 }
 
@@ -108,11 +110,12 @@ type Query {
 
 type Rental {
   car: Car
-  createdAt: Date!
-  endDate: Date!
+  createdAt: DateTime!
+  endDate: DateTime!
   id: ID!
-  startDate: Date!
-  updatedAt: Date!
+  past: Boolean
+  startDate: DateTime!
+  updatedAt: DateTime!
   user: User
 }
 
@@ -128,12 +131,12 @@ input SignupInput {
 }
 
 type Specification {
-  createdAt: Date!
+  createdAt: DateTime!
   icon: String!
   id: ID!
   isIconValue: Boolean
   name: String!
-  updatedAt: Date!
+  updatedAt: DateTime!
 }
 
 type Token {
@@ -148,10 +151,10 @@ input UpdateUserInput {
 type User {
   admin: Boolean!
   avatar: Photo
-  createdAt: Date!
+  createdAt: DateTime!
   email: String!
   id: ID!
   name: String!
   rentals: [Rental!]
-  updatedAt: Date!
+  updatedAt: DateTime!
 }

@@ -1,3 +1,4 @@
+import { ValidationPipe } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
 import { NestFactory } from '@nestjs/core'
 
@@ -10,6 +11,7 @@ async function bootstrap() {
   const configService = app.get(ConfigService)
   const nestConfig = configService.get<NestConfig>('nest')
   const corsConfig = configService.get<CorsConfig>('cors')
+  app.useGlobalPipes(new ValidationPipe())
 
   if (corsConfig.enabled) {
     app.enableCors()
