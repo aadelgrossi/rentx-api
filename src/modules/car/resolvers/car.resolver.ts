@@ -9,7 +9,7 @@ import {
 import { PrismaService } from 'src/services'
 
 import { CarService } from '../car.service'
-import { CreateCarInput } from '../dto'
+import { CreateCarInput, CarFilterArgs } from '../dto'
 import { Car } from '../models'
 
 @Resolver(() => Car)
@@ -25,8 +25,10 @@ export class CarResolver {
   }
 
   @Query(() => [Car])
-  async cars(): Promise<Car[]> {
-    return this.carService.cars()
+  async cars(
+    @Args('filter', { nullable: true }) filterCarsArgs: CarFilterArgs
+  ): Promise<Car[]> {
+    return this.carService.cars(filterCarsArgs)
   }
 
   @Mutation(() => Car)
