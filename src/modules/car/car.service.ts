@@ -7,12 +7,13 @@ import {
 import { UserInputError, ValidationError } from 'apollo-server-express'
 
 import { PrismaService } from '../../services'
+import { CreateCarInput, CarFilterArgs } from './dto'
 import {
-  CreateCarInput,
-  CreateManufacturerInput,
-  CreatePhotoInput,
-  CreateSpecificationInput
-} from './dto'
+  buildCarFilterOptionsQuery,
+  findOrCreateManufacturer,
+  createPhoto,
+  createSpecifications
+} from './queries'
 
 interface CustomPrismaError extends PrismaClientKnownRequestError {
   meta: {
@@ -34,12 +35,13 @@ export class CarService {
     })
   }
 
-  async cars(): Promise<Car[]> {
+  async cars(options: CarFilterArgs = {}): Promise<Car[]> {
+    const where = buildCarFilterOptionsQuery(options)
+
     return this.prisma.car.findMany({
+      where,
       include: {
-        manufacturer: true,
-        photo: true,
-        specifications: true
+        manufacturer: true
       }
     })
   }
@@ -66,9 +68,9 @@ export class CarService {
       return await this.prisma.car.create({
         data: {
           ...payload,
-          specifications: buildSpecifications(specifications),
-          manufacturer: buildManufacturer(manufacturer),
-          photo: buildPhoto(photo)
+          specifications: createSpecifications(specifications),
+          manufacturer: findOrCreateManufacturer(manufacturer),
+          photo: createPhoto(photo)
         }
       })
     } catch (err) {
@@ -88,34 +90,3 @@ export class CarService {
     }
   }
 }
-
-const buildPhoto = (photo: CreatePhotoInput) => ({
-  create: {
-    url: photo.url
-  }
-})
-
-const buildSpecifications = (specifications: CreateSpecificationInput[]) => ({
-  create: specifications.map(spec => ({
-    specification: {
-      connectOrCreate: {
-        where: {
-          name: spec.name
-        },
-        create: {
-          name: spec.name,
-          isIconValue: spec.isIconValue,
-          icon: spec.icon || spec.name.toLowerCase()
-        }
-      }
-    },
-    value: spec.value
-  }))
-})
-
-const buildManufacturer = ({ name }: CreateManufacturerInput) => ({
-  connectOrCreate: {
-    where: { name },
-    create: { name }
-  }
-})
