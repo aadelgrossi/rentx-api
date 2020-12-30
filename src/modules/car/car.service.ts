@@ -1,6 +1,10 @@
 import { Injectable } from '@nestjs/common'
-import { Car, CarWhereUniqueInput } from '@prisma/client'
-import { UserInputError } from 'apollo-server-express'
+import {
+  Car,
+  CarWhereUniqueInput,
+  PrismaClientKnownRequestError
+} from '@prisma/client'
+import { UserInputError, ValidationError } from 'apollo-server-express'
 
 import { PrismaService } from '../../services'
 import {
@@ -9,6 +13,12 @@ import {
   CreatePhotoInput,
   CreateSpecificationInput
 } from './dto'
+
+interface CustomPrismaError extends PrismaClientKnownRequestError {
+  meta: {
+    target: Array<string>
+  }
+}
 
 @Injectable()
 export class CarService {
@@ -39,7 +49,7 @@ export class CarService {
     specifications,
     photo,
     ...payload
-  }: CreateCarInput): Promise<Car> {
+  }: CreateCarInput): Promise<Car | null> {
     const requiredSpecsIncluded = specifications.filter(
       s =>
         s.name.toLowerCase() === 'transmission' ||
@@ -52,14 +62,30 @@ export class CarService {
       )
     }
 
-    return await this.prisma.car.create({
-      data: {
-        ...payload,
-        specifications: buildSpecifications(specifications),
-        manufacturer: buildManufacturer(manufacturer),
-        photo: buildPhoto(photo)
+    try {
+      return await this.prisma.car.create({
+        data: {
+          ...payload,
+          specifications: buildSpecifications(specifications),
+          manufacturer: buildManufacturer(manufacturer),
+          photo: buildPhoto(photo)
+        }
+      })
+    } catch (err) {
+      const { meta } = err as CustomPrismaError
+
+      if (meta.target.includes('model')) {
+        throw new ValidationError(
+          'The combination MANUFACTURER + MODEL must be unique'
+        )
       }
-    })
+
+      if (meta.target.includes('specificationId')) {
+        throw new ValidationError(
+          'Only one value per specification can be provided.'
+        )
+      }
+    }
   }
 }
 

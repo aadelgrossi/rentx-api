@@ -1,0 +1,37 @@
+{
+  "version": "0.3.14-fixed",
+  "steps": [
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Model",
+          "model": "Car",
+          "arguments": [
+            {
+              "name": "",
+              "value": "[model, manufacturerId]"
+            }
+          ]
+        },
+        "directive": "unique"
+      }
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Model",
+          "model": "CarSpecification",
+          "arguments": [
+            {
+              "name": "",
+              "value": "[specificationId, carId]"
+            }
+          ]
+        },
+        "directive": "unique"
+      }
+    }
+  ]
+}
