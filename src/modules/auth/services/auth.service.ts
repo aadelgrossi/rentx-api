@@ -12,7 +12,7 @@ import { PrismaClientKnownRequestError } from '@prisma/client'
 import { SecurityConfig } from 'src/configs/config.interface'
 import { PrismaService } from 'src/services'
 
-import { User } from '../../user/user.model'
+import { User } from '../../user/models'
 import { SigninInput, SignupInput } from '../dto'
 import { Token } from '../models'
 import { PasswordService } from './password.service'
