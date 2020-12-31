@@ -1,7 +1,7 @@
 import { InputType } from '@nestjs/graphql'
 import { IsString } from 'class-validator'
 
-import { IsEndDateAfterStartDate, IsValidMaxDate, MinDate } from '../validators'
+import { IsEndDateAfter, IsValidMaxDate, MinDate } from '../validators'
 
 @InputType()
 export class CreateRentalInput {
@@ -14,7 +14,7 @@ export class CreateRentalInput {
   @MinDate()
   startDate: Date
 
-  @IsEndDateAfterStartDate()
+  @IsEndDateAfter('startDate')
   @IsValidMaxDate()
   endDate: Date
 }
