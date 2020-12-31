@@ -21,10 +21,12 @@ type Car {
 }
 
 input CarFilterArgs {
+  fromDate: DateTime
   fuelType: String
   fullName: String
   maxDailyRate: Int
   minDailyRate: Int
+  toDate: DateTime
   transmission: String
 }
 
