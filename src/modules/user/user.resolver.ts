@@ -1,5 +1,12 @@
 import { UseGuards } from '@nestjs/common'
-import { Args, Mutation, Resolver, Query } from '@nestjs/graphql'
+import {
+  Args,
+  Mutation,
+  Resolver,
+  Query,
+  ResolveField,
+  Parent
+} from '@nestjs/graphql'
 import { PrismaService } from 'src/services'
 
 import { ChangePasswordInput } from './dto/change-password.input'
@@ -42,5 +49,16 @@ export class UserResolver {
       user.password,
       changePassword
     )
+  }
+
+  @ResolveField('avatar')
+  async avatar(@Parent() user: User) {
+    return this.prisma.user
+      .findOne({
+        where: {
+          id: user.id
+        }
+      })
+      .avatar()
   }
 }

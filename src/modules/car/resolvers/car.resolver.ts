@@ -65,6 +65,14 @@ export class CarResolver {
 
   @ResolveField('fullName')
   async fullName(@Parent() car: Car) {
-    return `${car.manufacturer.name} ${car.model}`
+    const manufacturer = await this.prisma.car
+      .findOne({
+        where: {
+          id: car.id
+        }
+      })
+      .manufacturer()
+
+    return `${manufacturer.name} ${car.model}`
   }
 }

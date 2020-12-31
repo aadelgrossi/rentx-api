@@ -2,7 +2,6 @@ import { Module } from '@nestjs/common'
 import { ConfigModule, ConfigService } from '@nestjs/config'
 import { GraphQLModule } from '@nestjs/graphql'
 
-import { DateScalar } from './common/date.scalar'
 import config from './configs/config'
 import { GraphqlConfig } from './configs/config.interface'
 import { AuthModule, CarModule, UserModule, RentalModule } from './modules'
@@ -33,6 +32,6 @@ import { AppService } from './services'
     CarModule,
     RentalModule
   ],
-  providers: [AppService, DateScalar]
+  providers: [AppService]
 })
 export class AppModule {}

@@ -23,9 +23,15 @@ module.exports = {
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
+    'no-unused-vars': 'off',
+    "@typescript-eslint/no-unused-vars": [
+      "warn",
+      {
+        "argsIgnorePattern": "_"
+      }
+    ],
     'prettier/prettier': 'error',
     'no-useless-constructor': 'off',
-    'no-unused-vars': 'warn',
     "space-before-function-paren": 'off',
     "import/order": [
       "error",

@@ -1,60 +1,131 @@
-import { CarWhereInput, Enumerable } from '@prisma/client'
+import {
+  CarSpecificationWhereInput,
+  CarWhereInput,
+  Enumerable
+} from '@prisma/client'
 
 import { CarFilterArgs } from '../dto'
 
 export const buildCarFilterOptionsQuery = ({
   fullName,
   fuelType,
-  minDailyRate,
-  maxDailyRate,
-  transmission
+  fromDate,
+  toDate,
+  transmission,
+  ...values
 }: CarFilterArgs) => {
-  const name: Enumerable<CarWhereInput> = {
-    OR: [
-      {
-        model: {
-          contains: fullName
-        }
-      },
-      {
-        manufacturer: {
-          name: {
-            contains: fullName
-          }
-        }
-      }
-    ]
-  }
-
-  const value: CarWhereInput = {
-    dailyRate: {
-      gte: minDailyRate,
-      lte: maxDailyRate
-    }
-  }
-
-  const specifications: CarWhereInput = {
-    specifications: {
-      every: {
+  const name: Enumerable<CarWhereInput> = fullName
+    ? {
         OR: [
           {
-            specification: {
-              name: 'FuelType'
-            },
-            value: fuelType
+            model: {
+              contains: fullName,
+              mode: 'insensitive'
+            }
           },
           {
-            specification: {
-              name: 'Transmission'
-            },
-            value: transmission
+            manufacturer: {
+              name: {
+                contains: fullName,
+                mode: 'insensitive'
+              }
+            }
           }
         ]
       }
+    : {}
+
+  const value: CarWhereInput = {
+    dailyRate: {
+      gte: values?.minDailyRate,
+      lte: values?.maxDailyRate
     }
   }
 
+  const fuelTypeSpecFilter: CarSpecificationWhereInput = fuelType
+    ? {
+        specification: {
+          name: 'FuelType'
+        },
+        value: fuelType
+      }
+    : {}
+
+  const transmissionSpecFilter: CarSpecificationWhereInput = transmission
+    ? {
+        specification: {
+          name: 'Transmission'
+        },
+        value: transmission
+      }
+    : {}
+
+  const specifications: CarWhereInput =
+    transmission && fuelType
+      ? {
+          AND: [
+            {
+              specifications: {
+                some: { ...fuelTypeSpecFilter }
+              }
+            },
+            {
+              specifications: {
+                some: { ...transmissionSpecFilter }
+              }
+            }
+          ]
+        }
+      : {
+          specifications: {
+            some: {
+              ...fuelTypeSpecFilter,
+              ...transmissionSpecFilter
+            }
+          }
+        }
+
+  const availability: CarWhereInput =
+    fromDate && toDate
+      ? {
+          Rental: {
+            none: {
+              AND: [
+                {
+                  OR: [
+                    {
+                      startDate: {
+                        lte: fromDate
+                      }
+                    },
+                    {
+                      startDate: {
+                        lte: toDate
+                      }
+                    }
+                  ]
+                },
+                {
+                  OR: [
+                    {
+                      endDate: {
+                        gte: toDate
+                      }
+                    },
+                    {
+                      endDate: {
+                        gte: fromDate
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      : {}
+
   return {
-    AND: { ...name, ...value, ...specifications }
+    AND: { ...name, ...value, ...specifications, ...availability }
   }
 }
