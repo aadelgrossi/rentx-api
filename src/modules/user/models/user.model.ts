@@ -1,7 +1,9 @@
 import { Field, ObjectType, HideField } from '@nestjs/graphql'
 import { BaseModel, Photo } from 'src/models'
 
-import { Rental } from '../rental/rental.model'
+import { FavoriteCar } from '../../car/models'
+import { Rental } from '../../rental/rental.model'
+
 @ObjectType()
 export class User extends BaseModel {
   email: string
@@ -18,4 +20,6 @@ export class User extends BaseModel {
 
   @Field(() => [Rental], { nullable: true })
   rentals?: [Rental]
+
+  favoriteCar?: FavoriteCar
 }
