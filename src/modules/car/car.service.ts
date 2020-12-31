@@ -89,4 +89,39 @@ export class CarService {
       }
     }
   }
+
+  async getFavoriteCarForUser(userId: string) {
+    const rentedCarsForUser = await this.prisma.car.findMany({
+      where: {
+        Rental: {
+          some: {
+            userId
+          }
+        }
+      },
+      include: {
+        manufacturer: true
+      },
+      distinct: 'id'
+    })
+
+    const userRentals = await this.prisma.rental.findMany({
+      where: {
+        userId
+      }
+    })
+
+    const carsGroupedByTimesRented = rentedCarsForUser.map(car => ({
+      timesRented: userRentals.reduce((total, curr) => {
+        return curr.carId === car.id ? total + 1 : total
+      }, 0),
+      ...car
+    }))
+
+    const car = carsGroupedByTimesRented.reduce((mostRented, item) => {
+      return item.timesRented > mostRented.timesRented ? item : mostRented
+    })
+
+    return car
+  }
 }
