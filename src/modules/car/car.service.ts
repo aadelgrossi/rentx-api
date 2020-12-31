@@ -8,6 +8,7 @@ import { UserInputError, ValidationError } from 'apollo-server-express'
 
 import { PrismaService } from '../../services'
 import { CreateCarInput, CarFilterArgs } from './dto'
+import { FavoriteCar } from './models'
 import {
   buildCarFilterOptionsQuery,
   findOrCreateManufacturer,
@@ -112,9 +113,7 @@ export class CarService {
     })
 
     const carsGroupedByTimesRented = rentedCarsForUser.map(car => ({
-      timesRented: userRentals.reduce((total, curr) => {
-        return curr.carId === car.id ? total + 1 : total
-      }, 0),
+      timesRented: userRentals.filter(item => item.carId === car.id).length,
       ...car
     }))
 
