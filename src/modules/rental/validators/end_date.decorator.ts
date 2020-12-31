@@ -7,22 +7,22 @@ import {
 } from 'class-validator'
 import { differenceInDays } from 'date-fns'
 
-import { CreateRentalInput } from './dto/create_rental.input'
+import { CreateRentalInput } from '../dto/create_rental.input'
 
-export function IsValidEndDate(validationOptions?: ValidationOptions) {
+export function IsEndDateAfterStartDate(validationOptions?: ValidationOptions) {
   return (object: any, propertyName: string) => {
     registerDecorator({
       target: object.constructor,
       propertyName,
       options: validationOptions,
       constraints: ['startDate'],
-      validator: DateConstraint
+      validator: EndDateConstraint
     })
   }
 }
 
-@ValidatorConstraint({ name: 'IsValidEndDate' })
-export class DateConstraint implements ValidatorConstraintInterface {
+@ValidatorConstraint({ name: 'ValidateEndDate' })
+export class EndDateConstraint implements ValidatorConstraintInterface {
   validate(value: any, args: ValidationArguments) {
     const { startDate } = args.object as CreateRentalInput
     return differenceInDays(value, startDate) >= 1
