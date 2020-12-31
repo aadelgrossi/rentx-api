@@ -9,11 +9,12 @@ import {
 } from '@nestjs/graphql'
 import { PrismaService } from 'src/services'
 
-import { ChangePasswordInput } from './dto/change-password.input'
-import { UpdateUserInput } from './dto/update-user.input'
+import { CarService } from '../car/car.service'
+import { FavoriteCar } from '../car/models'
+import { ChangePasswordInput, UpdateUserInput } from './dto'
 import { GqlAuthGuard } from './gql-auth.guard'
+import { User } from './models/user.model'
 import { UserEntity } from './user.decorator'
-import { User } from './user.model'
 import { UserService } from './user.service'
 
 @Resolver(() => User)
@@ -21,12 +22,13 @@ import { UserService } from './user.service'
 export class UserResolver {
   constructor(
     private userService: UserService,
+    private carService: CarService,
     private prisma: PrismaService
   ) {}
 
-  @Query(() => [User])
-  async users(): Promise<User[]> {
-    return this.prisma.user.findMany()
+  @Query(() => User)
+  async me(@UserEntity() user: User): Promise<User> {
+    return user
   }
 
   @UseGuards(GqlAuthGuard)
@@ -60,5 +62,10 @@ export class UserResolver {
         }
       })
       .avatar()
+  }
+
+  @ResolveField(() => FavoriteCar)
+  async favoriteCar(@Parent() user: User) {
+    return this.carService.getFavoriteCarForUser(user.id)
   }
 }
