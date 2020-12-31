@@ -12,7 +12,8 @@ export const buildCarFilterOptionsQuery = ({
   fromDate,
   toDate,
   transmission,
-  ...values
+  maxDailyRate,
+  minDailyRate
 }: CarFilterArgs) => {
   const name: Enumerable<CarWhereInput> = fullName
     ? {
@@ -35,12 +36,15 @@ export const buildCarFilterOptionsQuery = ({
       }
     : {}
 
-  const value: CarWhereInput = {
-    dailyRate: {
-      gte: values?.minDailyRate,
-      lte: values?.maxDailyRate
-    }
-  }
+  const value: CarWhereInput =
+    maxDailyRate || minDailyRate
+      ? {
+          dailyRate: {
+            gte: minDailyRate,
+            lte: maxDailyRate
+          }
+        }
+      : {}
 
   const fuelTypeSpecFilter: CarSpecificationWhereInput = fuelType
     ? {
