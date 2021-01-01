@@ -11,7 +11,7 @@ export const userData: Prisma.UserCreateInput[] = [
           'https://pbs.twimg.com/profile_images/669103856106668033/UF3cgUk4.jpg'
       }
     },
-    createdAt: '2019-10-03 17:45:16.551'
+    createdAt: new Date('2019-10-03T17:45:16.551Z')
   },
   {
     name: 'Elon Musk',
@@ -22,7 +22,7 @@ export const userData: Prisma.UserCreateInput[] = [
         url: 'https://imagens.canaltech.com.br/celebridades/18.400.jpg'
       }
     },
-    createdAt: '2020-07-12 05:46:16.551'
+    createdAt: new Date('2020-07-12T05:46:16.551Z')
   },
   {
     name: 'Dua Lipa',
@@ -34,7 +34,7 @@ export const userData: Prisma.UserCreateInput[] = [
           'https://www.pausaparafeminices.com/pausawp/wp-content/uploads/2017/11/Dua-Lipa-1.jpg'
       }
     },
-    createdAt: '2020-01-22 10:07:16.551'
+    createdAt: new Date('2020-01-22T10:07:16.551Z')
   },
   {
     name: 'Reed Hastings',
@@ -45,6 +45,6 @@ export const userData: Prisma.UserCreateInput[] = [
         url: 'https://notednames.com/ImgProfile/lo@m_Reed%20Hastings.jpg'
       }
     },
-    createdAt: '2018-09-15 20:56:16.551'
+    createdAt: new Date('2018-09-15T20:56:16.551Z')
   }
 ]
