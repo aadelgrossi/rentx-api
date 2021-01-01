@@ -1,14 +1,10 @@
 import { Injectable } from '@nestjs/common'
-import {
-  Car,
-  CarWhereUniqueInput,
-  PrismaClientKnownRequestError
-} from '@prisma/client'
+import { Prisma, PrismaClientKnownRequestError } from '@prisma/client'
 import { UserInputError, ValidationError } from 'apollo-server-express'
 
 import { PrismaService } from '../../services'
 import { CreateCarInput, CarFilterArgs } from './dto'
-import { FavoriteCar } from './models'
+import { Car } from './models'
 import {
   buildCarFilterOptionsQuery,
   findOrCreateManufacturer,
@@ -26,8 +22,8 @@ interface CustomPrismaError extends PrismaClientKnownRequestError {
 export class CarService {
   constructor(private readonly prisma: PrismaService) {}
 
-  async car(carWhereUniqueInput: CarWhereUniqueInput): Promise<Car> {
-    return this.prisma.car.findOne({
+  async car(carWhereUniqueInput: Prisma.CarWhereUniqueInput): Promise<Car> {
+    return this.prisma.car.findUnique({
       where: carWhereUniqueInput,
       include: {
         manufacturer: true,

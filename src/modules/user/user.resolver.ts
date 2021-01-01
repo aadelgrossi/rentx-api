@@ -56,7 +56,7 @@ export class UserResolver {
   @ResolveField('avatar')
   async avatar(@Parent() user: User) {
     return this.prisma.user
-      .findOne({
+      .findUnique({
         where: {
           id: user.id
         }

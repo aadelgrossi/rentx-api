@@ -10,7 +10,7 @@ export class CarSpecificationResolver {
   @ResolveField('specification')
   async specification(@Parent() { id }: CarSpecification) {
     return await this.prisma.carSpecification
-      .findOne({
+      .findUnique({
         where: { id }
       })
       .specification()

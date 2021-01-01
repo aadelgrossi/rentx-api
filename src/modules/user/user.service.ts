@@ -1,10 +1,5 @@
 import { BadRequestException, Injectable } from '@nestjs/common'
-import {
-  User,
-  UserOrderByInput,
-  UserWhereInput,
-  UserWhereUniqueInput
-} from '@prisma/client'
+import { User, Prisma } from '@prisma/client'
 
 import { PrismaService } from '../../services/prisma.service'
 import { PasswordService } from '../auth/services/password.service'
@@ -17,8 +12,8 @@ export class UserService {
     private passwordService: PasswordService
   ) {}
 
-  async user(userWhereUniqueInput: UserWhereUniqueInput): Promise<User> {
-    return this.prisma.user.findOne({
+  async user(userWhereUniqueInput: Prisma.UserWhereUniqueInput): Promise<User> {
+    return this.prisma.user.findUnique({
       where: userWhereUniqueInput
     })
   }
@@ -26,9 +21,9 @@ export class UserService {
   async users(params: {
     skip?: number
     take?: number
-    cursor?: UserWhereUniqueInput
-    where?: UserWhereInput
-    orderBy?: UserOrderByInput
+    cursor?: Prisma.UserWhereUniqueInput
+    where?: Prisma.UserWhereInput
+    orderBy?: Prisma.UserOrderByInput
   }): Promise<User[]> {
     const { skip, take, cursor, where, orderBy } = params
     return this.prisma.user.findMany({
@@ -75,7 +70,7 @@ export class UserService {
     })
   }
 
-  async deleteUser(where: UserWhereUniqueInput): Promise<User> {
+  async deleteUser(where: Prisma.UserWhereUniqueInput): Promise<User> {
     return this.prisma.user.delete({
       where
     })

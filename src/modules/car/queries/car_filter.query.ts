@@ -1,8 +1,4 @@
-import {
-  CarSpecificationWhereInput,
-  CarWhereInput,
-  Enumerable
-} from '@prisma/client'
+import { Prisma, Enumerable } from '@prisma/client'
 
 import { CarFilterArgs } from '../dto'
 
@@ -15,7 +11,7 @@ export const buildCarFilterOptionsQuery = ({
   maxDailyRate,
   minDailyRate
 }: CarFilterArgs) => {
-  const name: Enumerable<CarWhereInput> = fullName
+  const name: Enumerable<Prisma.CarWhereInput> = fullName
     ? {
         OR: [
           {
@@ -36,7 +32,7 @@ export const buildCarFilterOptionsQuery = ({
       }
     : {}
 
-  const value: CarWhereInput =
+  const value: Prisma.CarWhereInput =
     maxDailyRate || minDailyRate
       ? {
           dailyRate: {
@@ -46,7 +42,7 @@ export const buildCarFilterOptionsQuery = ({
         }
       : {}
 
-  const fuelTypeSpecFilter: CarSpecificationWhereInput = fuelType
+  const fuelTypeSpecFilter: Prisma.CarSpecificationWhereInput = fuelType
     ? {
         specification: {
           name: 'FuelType'
@@ -55,7 +51,7 @@ export const buildCarFilterOptionsQuery = ({
       }
     : {}
 
-  const transmissionSpecFilter: CarSpecificationWhereInput = transmission
+  const transmissionSpecFilter: Prisma.CarSpecificationWhereInput = transmission
     ? {
         specification: {
           name: 'Transmission'
@@ -64,7 +60,7 @@ export const buildCarFilterOptionsQuery = ({
       }
     : {}
 
-  const specifications: CarWhereInput =
+  const specifications: Prisma.CarWhereInput =
     transmission && fuelType
       ? {
           AND: [
@@ -89,7 +85,7 @@ export const buildCarFilterOptionsQuery = ({
           }
         }
 
-  const availability: CarWhereInput =
+  const availability: Prisma.CarWhereInput =
     fromDate && toDate
       ? {
           Rental: {

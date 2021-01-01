@@ -8,7 +8,7 @@ import {
 } from '@nestjs/graphql'
 import { PrismaService } from 'src/services'
 
-import { CreateRentalInput } from './dto/create_rental.input'
+import { CreateRentalInput } from './dto'
 import { Rental } from './rental.model'
 import { RentalService } from './rental.service'
 
@@ -32,7 +32,7 @@ export class RentalResolver {
   @ResolveField('user')
   async user(@Parent() rental: Rental) {
     return await this.prisma.rental
-      .findOne({
+      .findUnique({
         where: {
           id: rental.id
         }
@@ -43,7 +43,7 @@ export class RentalResolver {
   @ResolveField('car')
   async car(@Parent() rental: Rental) {
     return await this.prisma.rental
-      .findOne({
+      .findUnique({
         where: {
           id: rental.id
         }
