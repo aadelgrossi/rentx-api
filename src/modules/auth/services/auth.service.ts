@@ -55,7 +55,7 @@ export class AuthService {
   }
 
   async login({ email, password }: SigninInput): Promise<Token> {
-    const user = await this.prisma.user.findOne({ where: { email } })
+    const user = await this.prisma.user.findUnique({ where: { email } })
 
     if (!user) {
       throw new NotFoundException(`No user found with email ${email}`)
@@ -76,12 +76,12 @@ export class AuthService {
   }
 
   validateUser(userId: string): Promise<User> {
-    return this.prisma.user.findOne({ where: { id: userId } })
+    return this.prisma.user.findUnique({ where: { id: userId } })
   }
 
   getUserFromToken(token: string): Promise<User> {
     const id = this.jwtService.decode(token)['userId']
-    return this.prisma.user.findOne({ where: { id } })
+    return this.prisma.user.findUnique({ where: { id } })
   }
 
   generateToken(payload: Record<string, unknown>): Token {

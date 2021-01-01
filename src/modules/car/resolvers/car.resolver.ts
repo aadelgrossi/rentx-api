@@ -39,7 +39,7 @@ export class CarResolver {
   @ResolveField('manufacturer')
   async manufacturer(@Parent() { id }: Car) {
     return await this.prisma.car
-      .findOne({
+      .findUnique({
         where: { id }
       })
       .manufacturer()
@@ -48,7 +48,7 @@ export class CarResolver {
   @ResolveField('specifications')
   async specifications(@Parent() { id }: Car) {
     return await this.prisma.car
-      .findOne({
+      .findUnique({
         where: { id }
       })
       .specifications()
@@ -57,7 +57,7 @@ export class CarResolver {
   @ResolveField('photo')
   async photo(@Parent() { id }: Car) {
     return await this.prisma.car
-      .findOne({
+      .findUnique({
         where: { id }
       })
       .photo()
@@ -66,7 +66,7 @@ export class CarResolver {
   @ResolveField('fullName')
   async fullName(@Parent() car: Car) {
     const manufacturer = await this.prisma.car
-      .findOne({
+      .findUnique({
         where: {
           id: car.id
         }
