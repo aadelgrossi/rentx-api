@@ -3,8 +3,8 @@ import { Prisma } from '@prisma/client'
 export const userData: Prisma.UserCreateInput[] = [
   {
     name: 'Jeff Bezos',
-    email: 'bezos@amazon.com',
-    password: '$2y$10$xygCjygFaC8HI44RBh0zAuKC.aw3jRqh7RjYme6TaY4H51shK665e', // bezostoall
+    email: 'jeff@amazon.com',
+    password: '$2b$10$33QZq3.BfwSPXIYB.2Ez3Ox1S4b0aVz1l3yT/2Q.POO1uENe8h9y.', // bezostoall
     avatar: {
       create: {
         url:
@@ -16,7 +16,7 @@ export const userData: Prisma.UserCreateInput[] = [
   {
     name: 'Elon Musk',
     email: 'elon@spacex.com',
-    password: '$2y$10$Rt5Kbn5EaNhUci5e7x/2peT.5Dc6IhAOpyU0vvaCpLNnsg/elhi0K', // teslarocks
+    password: '$2b$10$YtdkedOPaswmcGQBp9AW..GRO1nPd9djlm9sgyME.ZHRq.atvK2n6', // teslarocks
     avatar: {
       create: {
         url: 'https://imagens.canaltech.com.br/celebridades/18.400.jpg'
@@ -27,7 +27,7 @@ export const userData: Prisma.UserCreateInput[] = [
   {
     name: 'Dua Lipa',
     email: 'futurenostalgia@gmail.com',
-    password: '$2y$10$c9cl0qOmgNPBrCF6WdNk7OXhPJU.Xh92gbDO70AAqYGS9e4YJB2am', // breakmycar
+    password: '$2b$10$Z3UJ0kKW1nlDHTBGGRke5./8Ts1Zw9E7Dm6pYKYSDILrYowCR2PAe', // breakmycar
     avatar: {
       create: {
         url:
@@ -39,7 +39,7 @@ export const userData: Prisma.UserCreateInput[] = [
   {
     name: 'Reed Hastings',
     email: 'theboss@netflix.com',
-    password: '$2y$10$rFQA4GC3dmstfJJOJwloVuzg/7iwen6FkJENlLu868NjesQu/B1HO ', // netflixandchill
+    password: '$2b$10$ju5NBBra92K4ryjxX2CdsO3QDWH6xQlStKMhGssJ4/tGEK2kxFezm', // netflixandchill
     avatar: {
       create: {
         url: 'https://notednames.com/ImgProfile/lo@m_Reed%20Hastings.jpg'
