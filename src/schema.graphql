@@ -120,6 +120,7 @@ type Query {
   car(id: String!): Car
   cars(filter: CarFilterArgs): [Car!]!
   getRentalsForUser(id: String!): [Rental!]!
+  isEmailAvailable(email: String!): Boolean!
   me: User!
 }
 
