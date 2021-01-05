@@ -6,9 +6,6 @@ import { IsEndDateAfter, IsValidMaxDate, MinDate } from '../validators'
 @InputType()
 export class CreateRentalInput {
   @IsString()
-  userId: string
-
-  @IsString()
   carId: string
 
   @MinDate()
