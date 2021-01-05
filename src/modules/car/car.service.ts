@@ -88,6 +88,16 @@ export class CarService {
   }
 
   async getFavoriteCarForUser(userId: string) {
+    const userRentals = await this.prisma.rental.findMany({
+      where: {
+        userId
+      }
+    })
+
+    if (!userRentals.length) {
+      return null
+    }
+
     const rentedCarsForUser = await this.prisma.car.findMany({
       where: {
         Rental: {
@@ -100,12 +110,6 @@ export class CarService {
         manufacturer: true
       },
       distinct: 'id'
-    })
-
-    const userRentals = await this.prisma.rental.findMany({
-      where: {
-        userId
-      }
     })
 
     const carsGroupedByTimesRented = rentedCarsForUser.map(car => ({
