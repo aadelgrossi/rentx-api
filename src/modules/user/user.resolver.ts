@@ -31,7 +31,6 @@ export class UserResolver {
     return user
   }
 
-  @UseGuards(GqlAuthGuard)
   @Mutation(() => User)
   async updateUser(
     @UserEntity() user: User,
@@ -40,7 +39,6 @@ export class UserResolver {
     return this.userService.updateUser(user.id, newUserData)
   }
 
-  @UseGuards(GqlAuthGuard)
   @Mutation(() => User)
   async changePassword(
     @UserEntity() user: User,
@@ -67,5 +65,14 @@ export class UserResolver {
   @ResolveField(() => FavoriteCar)
   async favoriteCar(@Parent() user: User) {
     return this.carService.getFavoriteCarForUser(user.id)
+  }
+
+  @ResolveField(() => Number)
+  async totalRentals(@Parent() user: User) {
+    return this.prisma.rental.count({
+      where: {
+        user
+      }
+    })
   }
 }

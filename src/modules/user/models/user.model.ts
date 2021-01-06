@@ -22,4 +22,6 @@ export class User extends BaseModel {
   rentals?: [Rental]
 
   favoriteCar?: FavoriteCar
+
+  totalRentals?: number
 }
