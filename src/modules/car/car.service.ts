@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common'
 import { Prisma, PrismaClientKnownRequestError } from '@prisma/client'
 import { UserInputError, ValidationError } from 'apollo-server-express'
+import { differenceInDays } from 'date-fns'
 
 import { PrismaService } from '../../services'
 import { CreateCarInput, CarFilterArgs } from './dto'
@@ -48,7 +49,7 @@ export class CarService {
     specifications,
     photo,
     ...payload
-  }: CreateCarInput): Promise<Car | null> {
+  }: CreateCarInput): Promise<Car> {
     const specNames = specifications.map(s => s.name)
 
     const requiredSpecsIncluded =
@@ -112,15 +113,21 @@ export class CarService {
       distinct: 'id'
     })
 
-    const carsGroupedByTimesRented = rentedCarsForUser.map(car => ({
-      timesRented: userRentals.filter(item => item.carId === car.id).length,
-      ...car
-    }))
+    const carsGroupedByTimesRented = rentedCarsForUser.map(car => {
+      const totalDays = userRentals
+        .filter(r => r.carId === car.id)
+        .reduce((acc, item) => {
+          return acc + differenceInDays(item.endDate, item.startDate)
+        }, 0)
 
-    const car = carsGroupedByTimesRented.reduce((mostRented, item) => {
-      return item.timesRented > mostRented.timesRented ? item : mostRented
+      return { ...car, totalDays }
     })
 
-    return car
+    const topRentedCar = carsGroupedByTimesRented.reduce(
+      (top, current) => (current.totalDays > top.totalDays ? current : top),
+      { totalDays: 0 }
+    )
+
+    return topRentedCar
   }
 }
