@@ -11,6 +11,7 @@ type Auth {
 type Car {
   createdAt: DateTime!
   dailyRate: Int!
+  fuelType: String
   fullName: String
   id: ID!
   manufacturer: CarManufacturer
@@ -22,12 +23,12 @@ type Car {
 
 input CarFilterArgs {
   fromDate: DateTime
-  fuelType: String
+  fuelType: FuelType
   fullName: String
   maxDailyRate: Int
   minDailyRate: Int
   toDate: DateTime
-  transmission: String
+  transmission: Transmission
 }
 
 type CarManufacturer {
@@ -55,7 +56,7 @@ input CreateCarInput {
   dailyRate: Int!
   manufacturer: CreateManufacturerInput!
   model: String!
-  photo: CreatePhotoInput
+  photo: CreatePhotoInput!
   specifications: [CreateSpecificationInput!]
 }
 
@@ -88,6 +89,7 @@ scalar DateTime
 type FavoriteCar {
   createdAt: DateTime!
   dailyRate: Int!
+  fuelType: String
   fullName: String
   id: ID!
   manufacturer: CarManufacturer
@@ -96,6 +98,12 @@ type FavoriteCar {
   specifications: [CarSpecification!]
   timesRented: Int!
   updatedAt: DateTime!
+}
+
+enum FuelType {
+  ELECTRIC
+  GAS
+  HYBRID
 }
 
 type Mutation {
@@ -156,6 +164,11 @@ type Specification {
 type Token {
   accessToken: String!
   refreshToken: String!
+}
+
+enum Transmission {
+  AUTO
+  MANUAL
 }
 
 input UpdateUserInput {
