@@ -1,10 +1,12 @@
 import { Prisma } from '@prisma/client'
 
-export const whereFuelType = (value: string) =>
+import { BaseSpecs, FuelType } from '../../models'
+
+export const whereFuelType = (value: FuelType) =>
   value
     ? ({
         specification: {
-          name: 'FuelType'
+          name: BaseSpecs.FUEL_TYPE
         },
         value
       } as Prisma.CarSpecificationWhereInput)

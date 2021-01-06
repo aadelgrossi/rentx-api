@@ -1,11 +1,12 @@
 import { Prisma } from '@prisma/client'
 
+import { FuelType, Transmission } from '../../models'
 import { whereFuelType } from './fuel_type'
 import { whereTransmission } from './transmission'
 
 interface SpecificationWhereArgs {
-  fuelType: string
-  transmission: string
+  fuelType: FuelType
+  transmission: Transmission
 }
 
 export const specificationsInclude = ({
