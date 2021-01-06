@@ -15,8 +15,7 @@ export class CreateCarInput {
 
   manufacturer: CreateManufacturerInput
 
-  @Field(() => CreatePhotoInput, { nullable: true })
-  photo?: CreatePhotoInput
+  photo: CreatePhotoInput
 
   @ArrayMinSize(2)
   @Field(() => [CreateSpecificationInput], { nullable: true })
