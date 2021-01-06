@@ -1,6 +1,8 @@
 import { InputType } from '@nestjs/graphql'
 import { IsEndDateAfter } from 'src/modules/rental/validators'
 
+import { FuelType, Transmission } from '../models'
+
 @InputType()
 export class CarFilterArgs {
   fullName?: string
@@ -9,9 +11,9 @@ export class CarFilterArgs {
 
   maxDailyRate?: number
 
-  fuelType?: string
+  fuelType?: FuelType
 
-  transmission?: string
+  transmission?: Transmission
 
   fromDate?: Date
 

@@ -4,7 +4,7 @@ import { UserInputError, ValidationError } from 'apollo-server-express'
 
 import { PrismaService } from '../../services'
 import { CreateCarInput, CarFilterArgs } from './dto'
-import { Car } from './models'
+import { BaseSpecs, Car } from './models'
 import {
   buildCarFilterOptionsQuery,
   findOrCreateManufacturer,
@@ -49,13 +49,13 @@ export class CarService {
     photo,
     ...payload
   }: CreateCarInput): Promise<Car | null> {
-    const requiredSpecsIncluded = specifications.filter(
-      s =>
-        s.name.toLowerCase() === 'transmission' ||
-        s.name.toLowerCase() === 'fueltype'
-    ).length
+    const specNames = specifications.map(s => s.name)
 
-    if (requiredSpecsIncluded < 2) {
+    const requiredSpecsIncluded =
+      specNames.includes(BaseSpecs.TRANSMISSION) &&
+      specNames.includes(BaseSpecs.FUEL_TYPE)
+
+    if (!requiredSpecsIncluded) {
       throw new UserInputError(
         'Must include Transmission and Fuel Type specifications'
       )

@@ -10,7 +10,7 @@ import { PrismaService } from 'src/services'
 
 import { CarService } from '../car.service'
 import { CreateCarInput, CarFilterArgs } from '../dto'
-import { Car } from '../models'
+import { BaseSpecs, Car } from '../models'
 
 @Resolver(() => Car)
 export class CarResolver {
@@ -74,5 +74,19 @@ export class CarResolver {
       .manufacturer()
 
     return `${manufacturer.name} ${car.model}`
+  }
+
+  @ResolveField('fuelType')
+  async fuelType(@Parent() car: Car) {
+    const fuelType = await this.prisma.carSpecification.findFirst({
+      where: {
+        carId: car.id,
+        specification: {
+          name: BaseSpecs.FUEL_TYPE
+        }
+      }
+    })
+
+    return fuelType.value
   }
 }
