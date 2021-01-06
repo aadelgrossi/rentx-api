@@ -17,6 +17,7 @@ import { Rental } from './rental.model'
 import { RentalService } from './rental.service'
 
 @Resolver(() => Rental)
+@UseGuards(GqlAuthGuard)
 export class RentalResolver {
   constructor(
     private readonly rentalService: RentalService,
@@ -24,11 +25,10 @@ export class RentalResolver {
   ) {}
 
   @Query(() => [Rental])
-  async getRentalsForUser(@Args('id') id: string): Promise<Rental[]> {
+  async rentals(@UserEntity() { id }: User): Promise<Rental[]> {
     return this.rentalService.forUser(id)
   }
 
-  @UseGuards(GqlAuthGuard)
   @Mutation(() => Rental)
   async createRental(
     @UserEntity() user: User,
