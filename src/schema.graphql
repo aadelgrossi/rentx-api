@@ -96,7 +96,7 @@ type FavoriteCar {
   model: String!
   photo: Photo
   specifications: [CarSpecification!]
-  timesRented: Int!
+  totalDays: Int!
   updatedAt: DateTime!
 }
 
@@ -126,9 +126,9 @@ type Photo {
 type Query {
   car(id: String!): Car
   cars(filter: CarFilterArgs): [Car!]!
-  getRentalsForUser(id: String!): [Rental!]!
   isEmailAvailable(email: String!): Boolean!
   me: User!
+  rentals: [Rental!]!
 }
 
 type Rental {
@@ -184,5 +184,6 @@ type User {
   id: ID!
   name: String!
   rentals: [Rental!]
+  totalRentals: Int
   updatedAt: DateTime!
 }
