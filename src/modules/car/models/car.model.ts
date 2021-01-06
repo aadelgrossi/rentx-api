@@ -16,4 +16,6 @@ export class Car extends BaseModel {
 
   @Field(() => [CarSpecification], { nullable: true })
   specifications?: [CarSpecification]
+
+  fuelType?: string
 }
