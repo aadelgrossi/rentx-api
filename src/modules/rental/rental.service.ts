@@ -1,8 +1,13 @@
-import { Injectable } from '@nestjs/common'
+import { ConflictException, Injectable } from '@nestjs/common'
 import { PrismaService } from 'src/services'
 
+import { availableBetween } from '../car/queries/where'
 import { CreateRentalInput } from './dto/create_rental.input'
 import { Rental } from './rental.model'
+
+interface CreateRentalForUser extends CreateRentalInput {
+  userId: string
+}
 
 @Injectable()
 export class RentalService {
@@ -16,14 +21,20 @@ export class RentalService {
     })
   }
 
-  async create(payload: CreateRentalInput): Promise<Rental> {
-    return await this.prisma.rental.create({
-      data: {
-        carId: payload.carId,
-        userId: payload.userId,
-        startDate: new Date(payload.startDate),
-        endDate: new Date(payload.endDate)
+  async create(data: CreateRentalForUser): Promise<Rental> {
+    const { carId: id, startDate: fromDate, endDate: toDate } = data
+
+    const isCarAvailable = await this.prisma.car.findFirst({
+      where: {
+        id,
+        ...availableBetween({ fromDate, toDate })
       }
     })
+
+    if (!isCarAvailable) {
+      throw new ConflictException('Car is not available in the specified date')
+    }
+
+    return await this.prisma.rental.create({ data })
   }
 }

@@ -71,7 +71,6 @@ input CreateRentalInput {
   carId: String!
   endDate: DateTime!
   startDate: DateTime!
-  userId: String!
 }
 
 input CreateSpecificationInput {

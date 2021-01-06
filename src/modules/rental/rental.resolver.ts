@@ -1,3 +1,4 @@
+import { UseGuards } from '@nestjs/common'
 import {
   Args,
   Mutation,
@@ -8,6 +9,9 @@ import {
 } from '@nestjs/graphql'
 import { PrismaService } from 'src/services'
 
+import { GqlAuthGuard } from '../user/gql-auth.guard'
+import { User } from '../user/models'
+import { UserEntity } from '../user/user.decorator'
 import { CreateRentalInput } from './dto'
 import { Rental } from './rental.model'
 import { RentalService } from './rental.service'
@@ -24,9 +28,13 @@ export class RentalResolver {
     return this.rentalService.forUser(id)
   }
 
+  @UseGuards(GqlAuthGuard)
   @Mutation(() => Rental)
-  async createRental(@Args('data') data: CreateRentalInput): Promise<Rental> {
-    return this.rentalService.create(data)
+  async createRental(
+    @UserEntity() user: User,
+    @Args('data') data: CreateRentalInput
+  ): Promise<Rental> {
+    return this.rentalService.create({ ...data, userId: user.id })
   }
 
   @ResolveField('user')
