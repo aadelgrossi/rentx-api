@@ -114,13 +114,20 @@ export class CarService {
     })
 
     const carsGroupedByTimesRented = rentedCarsForUser.map(car => {
-      const totalDays = userRentals
+      const { timesRented, totalDays } = userRentals
         .filter(r => r.carId === car.id)
-        .reduce((acc, item) => {
-          return acc + differenceInDays(item.endDate, item.startDate)
-        }, 0)
+        .reduce(
+          (acc, item) => {
+            return {
+              totalDays:
+                acc.totalDays + differenceInDays(item.endDate, item.startDate),
+              timesRented: acc.timesRented + 1
+            }
+          },
+          { totalDays: 0, timesRented: 0 }
+        )
 
-      return { ...car, totalDays }
+      return { ...car, timesRented, totalDays }
     })
 
     const topRentedCar = carsGroupedByTimesRented.reduce(

@@ -89,13 +89,14 @@ scalar DateTime
 type FavoriteCar {
   createdAt: DateTime!
   dailyRate: Int!
-  fuelType: String
+  fuelType: String!
   fullName: String
   id: ID!
-  manufacturer: CarManufacturer
+  manufacturer: CarManufacturer!
   model: String!
-  photo: Photo
+  photo: Photo!
   specifications: [CarSpecification!]
+  timesRented: Int!
   totalDays: Int!
   updatedAt: DateTime!
 }

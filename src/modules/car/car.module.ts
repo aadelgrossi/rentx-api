@@ -3,8 +3,15 @@ import { PrismaService } from 'src/services/prisma.service'
 
 import { CarService } from './car.service'
 import { CarResolver, CarSpecificationResolver } from './resolvers'
+import { FavoriteCarResolver } from './resolvers/favorite_car.resolver'
 
 @Module({
-  providers: [PrismaService, CarResolver, CarSpecificationResolver, CarService]
+  providers: [
+    PrismaService,
+    CarResolver,
+    FavoriteCarResolver,
+    CarSpecificationResolver,
+    CarService
+  ]
 })
 export class CarModule {}

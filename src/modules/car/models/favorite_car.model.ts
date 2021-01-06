@@ -1,7 +1,8 @@
 import { ObjectType } from '@nestjs/graphql'
 
 import { Car } from './'
-@ObjectType()
+@ObjectType({ isAbstract: true })
 export class FavoriteCar extends Car {
   totalDays: number
+  timesRented: number
 }
