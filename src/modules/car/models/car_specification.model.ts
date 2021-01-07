@@ -4,14 +4,14 @@ import { BaseModel } from 'src/models'
 import { Car, Specification } from './'
 
 export enum FuelType {
-  GAS = 'gas',
-  HYBRID = 'hybrid',
-  ELECTRIC = 'electric'
+  gas = 'gas',
+  hybrid = 'hybrid',
+  electric = 'electric'
 }
 
 export enum Transmission {
-  AUTO = 'auto',
-  MANUAL = 'manual'
+  auto = 'auto',
+  manual = 'manual'
 }
 
 registerEnumType(FuelType, { name: 'FuelType' })
