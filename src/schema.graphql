@@ -102,9 +102,9 @@ type FavoriteCar {
 }
 
 enum FuelType {
-  ELECTRIC
-  GAS
-  HYBRID
+  electric
+  gas
+  hybrid
 }
 
 type Mutation {
@@ -130,6 +130,7 @@ type Query {
   isEmailAvailable(email: String!): Boolean!
   me: User!
   rentals: [Rental!]!
+  specifications(carId: String!): [CarSpecification!]!
 }
 
 type Rental {
@@ -168,8 +169,8 @@ type Token {
 }
 
 enum Transmission {
-  AUTO
-  MANUAL
+  auto
+  manual
 }
 
 input UpdateUserInput {

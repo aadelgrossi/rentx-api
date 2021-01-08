@@ -1,4 +1,4 @@
-import { Parent, ResolveField, Resolver } from '@nestjs/graphql'
+import { Args, Parent, ResolveField, Resolver, Query } from '@nestjs/graphql'
 import { PrismaService } from 'src/services'
 
 import { CarSpecification } from '../models'
@@ -14,5 +14,14 @@ export class CarSpecificationResolver {
         where: { id }
       })
       .specification()
+  }
+
+  @Query(() => [CarSpecification])
+  async specifications(@Args('carId') carId: string) {
+    return await this.prisma.carSpecification.findMany({
+      where: {
+        carId
+      }
+    })
   }
 }
