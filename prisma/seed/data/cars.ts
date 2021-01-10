@@ -23,7 +23,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'FuelType'
             }
           },
-          value: 'gas'
+          value: 'Gasolina'
         },
         {
           specification: {
@@ -31,7 +31,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'Transmission'
             }
           },
-          value: 'auto'
+          value: 'Automático'
         },
         {
           specification: {
@@ -39,7 +39,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'Seats'
             }
           },
-          value: '4'
+          value: '4 pessoas'
         },
         {
           specification: {
@@ -90,7 +90,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'FuelType'
             }
           },
-          value: 'gas'
+          value: 'Gasolina'
         },
         {
           specification: {
@@ -98,7 +98,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'Transmission'
             }
           },
-          value: 'manual'
+          value: 'Manual'
         },
         {
           specification: {
@@ -106,7 +106,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'Seats'
             }
           },
-          value: '4'
+          value: '4 pessoas'
         },
         {
           specification: {
@@ -157,7 +157,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'FuelType'
             }
           },
-          value: 'gas'
+          value: 'Gasolina'
         },
         {
           specification: {
@@ -165,7 +165,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'Transmission'
             }
           },
-          value: 'auto'
+          value: 'Automático'
         },
         {
           specification: {
@@ -173,7 +173,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'Seats'
             }
           },
-          value: '5'
+          value: '5 pessoas'
         },
         {
           specification: {
@@ -224,7 +224,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'FuelType'
             }
           },
-          value: 'gas'
+          value: 'Gasolina'
         },
         {
           specification: {
@@ -232,7 +232,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'Transmission'
             }
           },
-          value: 'auto'
+          value: 'Automático'
         },
         {
           specification: {
@@ -240,7 +240,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'Seats'
             }
           },
-          value: '4'
+          value: '4 pessoas'
         },
         {
           specification: {
@@ -291,7 +291,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'FuelType'
             }
           },
-          value: 'gas'
+          value: 'Gasolina'
         },
         {
           specification: {
@@ -299,7 +299,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'Transmission'
             }
           },
-          value: 'manual'
+          value: 'Manual'
         },
         {
           specification: {
@@ -307,7 +307,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'Seats'
             }
           },
-          value: '5'
+          value: '5 pessoas'
         },
         {
           specification: {
@@ -358,7 +358,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'FuelType'
             }
           },
-          value: 'gas'
+          value: 'Gasolina'
         },
         {
           specification: {
@@ -366,7 +366,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'Transmission'
             }
           },
-          value: 'manual'
+          value: 'Manual'
         },
         {
           specification: {
@@ -374,7 +374,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'Seats'
             }
           },
-          value: '4'
+          value: '4 pessoas'
         },
         {
           specification: {
@@ -425,7 +425,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'FuelType'
             }
           },
-          value: 'gas'
+          value: 'Gasolina'
         },
         {
           specification: {
@@ -433,7 +433,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'Transmission'
             }
           },
-          value: 'manual'
+          value: 'Manual'
         },
         {
           specification: {
@@ -441,7 +441,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'Seats'
             }
           },
-          value: '2'
+          value: '2 pessoas'
         },
         {
           specification: {
@@ -492,7 +492,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'FuelType'
             }
           },
-          value: 'gas'
+          value: 'Gasolina'
         },
         {
           specification: {
@@ -500,7 +500,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'Transmission'
             }
           },
-          value: 'manual'
+          value: 'Manual'
         },
         {
           specification: {
@@ -508,7 +508,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'Seats'
             }
           },
-          value: '2'
+          value: '2 pessoas'
         },
         {
           specification: {
@@ -559,7 +559,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'FuelType'
             }
           },
-          value: 'gas'
+          value: 'Gasolina'
         },
         {
           specification: {
@@ -567,7 +567,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'Transmission'
             }
           },
-          value: 'manual'
+          value: 'Manual'
         },
         {
           specification: {
@@ -575,7 +575,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'Seats'
             }
           },
-          value: '2'
+          value: '2 pessoas'
         },
         {
           specification: {
@@ -626,7 +626,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'FuelType'
             }
           },
-          value: 'hybrid'
+          value: 'Álcool'
         },
         {
           specification: {
@@ -634,7 +634,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'Transmission'
             }
           },
-          value: 'auto'
+          value: 'Automático'
         },
         {
           specification: {
@@ -642,7 +642,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'Seats'
             }
           },
-          value: '4'
+          value: '4 pessoas'
         },
         {
           specification: {
@@ -693,7 +693,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'FuelType'
             }
           },
-          value: 'gas'
+          value: 'Gasolina'
         },
         {
           specification: {
@@ -701,7 +701,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'Transmission'
             }
           },
-          value: 'manual'
+          value: 'Manual'
         },
         {
           specification: {
@@ -709,7 +709,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'Seats'
             }
           },
-          value: '4'
+          value: '4 pessoas'
         },
         {
           specification: {
@@ -760,7 +760,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'FuelType'
             }
           },
-          value: 'hybrid'
+          value: 'Álcool'
         },
         {
           specification: {
@@ -768,7 +768,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'Transmission'
             }
           },
-          value: 'auto'
+          value: 'Automático'
         },
         {
           specification: {
@@ -776,7 +776,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'Seats'
             }
           },
-          value: '4'
+          value: '4 pessoas'
         },
         {
           specification: {
@@ -827,7 +827,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'FuelType'
             }
           },
-          value: 'gas'
+          value: 'Gasolina'
         },
         {
           specification: {
@@ -835,7 +835,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'Transmission'
             }
           },
-          value: 'manual'
+          value: 'Manual'
         },
         {
           specification: {
@@ -843,7 +843,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'Seats'
             }
           },
-          value: '5'
+          value: '5 pessoas'
         },
         {
           specification: {
@@ -894,7 +894,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'FuelType'
             }
           },
-          value: 'gas'
+          value: 'Gasolina'
         },
         {
           specification: {
@@ -902,7 +902,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'Transmission'
             }
           },
-          value: 'manual'
+          value: 'Manual'
         },
         {
           specification: {
@@ -910,7 +910,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'Seats'
             }
           },
-          value: '2'
+          value: '2 pessoas'
         },
         {
           specification: {
@@ -961,7 +961,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'FuelType'
             }
           },
-          value: 'gas'
+          value: 'Gasolina'
         },
         {
           specification: {
@@ -969,7 +969,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'Transmission'
             }
           },
-          value: 'auto'
+          value: 'Automático'
         },
         {
           specification: {
@@ -977,7 +977,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'Seats'
             }
           },
-          value: '2'
+          value: '2 pessoas'
         },
         {
           specification: {
@@ -1028,7 +1028,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'FuelType'
             }
           },
-          value: 'hybrid'
+          value: 'Álcool'
         },
         {
           specification: {
@@ -1036,7 +1036,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'Transmission'
             }
           },
-          value: 'auto'
+          value: 'Automático'
         },
         {
           specification: {
@@ -1044,7 +1044,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'Seats'
             }
           },
-          value: '4'
+          value: '4 pessoas'
         },
         {
           specification: {
@@ -1095,7 +1095,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'FuelType'
             }
           },
-          value: 'gas'
+          value: 'Gasolina'
         },
         {
           specification: {
@@ -1103,7 +1103,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'Transmission'
             }
           },
-          value: 'manual'
+          value: 'Manual'
         },
         {
           specification: {
@@ -1111,7 +1111,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'Seats'
             }
           },
-          value: '2'
+          value: '2 pessoas'
         },
         {
           specification: {
@@ -1162,7 +1162,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'FuelType'
             }
           },
-          value: 'gas'
+          value: 'Gasolina'
         },
         {
           specification: {
@@ -1170,7 +1170,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'Transmission'
             }
           },
-          value: 'auto'
+          value: 'Automático'
         },
         {
           specification: {
@@ -1178,7 +1178,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'Seats'
             }
           },
-          value: '4'
+          value: '4 pessoas'
         },
         {
           specification: {
@@ -1229,7 +1229,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'FuelType'
             }
           },
-          value: 'hybrid'
+          value: 'Álcool'
         },
         {
           specification: {
@@ -1237,7 +1237,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'Transmission'
             }
           },
-          value: 'auto'
+          value: 'Automático'
         },
         {
           specification: {
@@ -1245,7 +1245,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'Seats'
             }
           },
-          value: '5'
+          value: '5 pessoas'
         },
         {
           specification: {
@@ -1296,7 +1296,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'FuelType'
             }
           },
-          value: 'gas'
+          value: 'Gasolina'
         },
         {
           specification: {
@@ -1304,7 +1304,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'Transmission'
             }
           },
-          value: 'auto'
+          value: 'Automático'
         },
         {
           specification: {
@@ -1312,7 +1312,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'Seats'
             }
           },
-          value: '5'
+          value: '5 pessoas'
         },
         {
           specification: {
@@ -1363,7 +1363,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'FuelType'
             }
           },
-          value: 'electric'
+          value: 'Elétrico'
         },
         {
           specification: {
@@ -1371,7 +1371,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'Transmission'
             }
           },
-          value: 'auto'
+          value: 'Automático'
         },
         {
           specification: {
@@ -1379,7 +1379,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'Seats'
             }
           },
-          value: '5'
+          value: '5 pessoas'
         },
         {
           specification: {
@@ -1430,7 +1430,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'FuelType'
             }
           },
-          value: 'hybrid'
+          value: 'Álcool'
         },
         {
           specification: {
@@ -1438,7 +1438,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'Transmission'
             }
           },
-          value: 'auto'
+          value: 'Automático'
         },
         {
           specification: {
@@ -1446,7 +1446,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'Seats'
             }
           },
-          value: '5'
+          value: '5 pessoas'
         },
         {
           specification: {
@@ -1497,7 +1497,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'FuelType'
             }
           },
-          value: 'gas'
+          value: 'Gasolina'
         },
         {
           specification: {
@@ -1505,7 +1505,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'Transmission'
             }
           },
-          value: 'manual'
+          value: 'Manual'
         },
         {
           specification: {
@@ -1513,7 +1513,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'Seats'
             }
           },
-          value: '2'
+          value: '2 pessoas'
         },
         {
           specification: {
@@ -1564,7 +1564,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'FuelType'
             }
           },
-          value: 'electric'
+          value: 'Elétrico'
         },
         {
           specification: {
@@ -1572,7 +1572,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'Transmission'
             }
           },
-          value: 'auto'
+          value: 'Automático'
         },
         {
           specification: {
@@ -1580,7 +1580,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'Seats'
             }
           },
-          value: '4'
+          value: '4 pessoas'
         },
         {
           specification: {
@@ -1631,7 +1631,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'FuelType'
             }
           },
-          value: 'electric'
+          value: 'Elétrico'
         },
         {
           specification: {
@@ -1639,7 +1639,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'Transmission'
             }
           },
-          value: 'auto'
+          value: 'Automático'
         },
         {
           specification: {
@@ -1647,7 +1647,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'Seats'
             }
           },
-          value: '5'
+          value: '5 pessoas'
         },
         {
           specification: {
@@ -1698,7 +1698,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'FuelType'
             }
           },
-          value: 'gas'
+          value: 'Gasolina'
         },
         {
           specification: {
@@ -1706,7 +1706,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'Transmission'
             }
           },
-          value: 'auto'
+          value: 'Automático'
         },
         {
           specification: {
@@ -1714,7 +1714,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'Seats'
             }
           },
-          value: '5'
+          value: '5 pessoas'
         },
         {
           specification: {
@@ -1765,7 +1765,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'FuelType'
             }
           },
-          value: 'gas'
+          value: 'Gasolina'
         },
         {
           specification: {
@@ -1773,7 +1773,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'Transmission'
             }
           },
-          value: 'manual'
+          value: 'Manual'
         },
         {
           specification: {
@@ -1781,7 +1781,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'Seats'
             }
           },
-          value: '5'
+          value: '5 pessoas'
         },
         {
           specification: {
