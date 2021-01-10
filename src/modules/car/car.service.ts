@@ -120,7 +120,8 @@ export class CarService {
           (acc, item) => {
             return {
               totalDays:
-                acc.totalDays + differenceInDays(item.endDate, item.startDate),
+                acc.totalDays +
+                (differenceInDays(item.endDate, item.startDate) + 1),
               timesRented: acc.timesRented + 1
             }
           },
