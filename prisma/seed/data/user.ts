@@ -25,7 +25,7 @@ export const userData: Prisma.UserCreateInput[] = [
         url: 'https://imagens.canaltech.com.br/celebridades/18.400.jpg'
       }
     },
-    createdAt: subDays(today, 168)
+    createdAt: subDays(today, 268)
   },
   {
     name: 'Dua Lipa',

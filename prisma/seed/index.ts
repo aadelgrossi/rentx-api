@@ -1,10 +1,12 @@
 import { PrismaClient } from '@prisma/client'
+import { format } from 'date-fns'
 import * as dotenv from 'dotenv'
 
 import {
   userData,
   specificationsData,
   carsData,
+  rentalsData,
   manufacturersData
 } from './data'
 
@@ -62,6 +64,47 @@ const seedCars = async () => {
   )
 }
 
+const seedRentals = async () => {
+  console.log('\n\nSeeding RENTALS...')
+
+  const cars = await prisma.car.findMany({
+    include: { manufacturer: true },
+    take: 10
+  })
+  const users = await prisma.user.findMany({ take: 4 })
+
+  return Promise.all(
+    rentalsData.map(async rental => {
+      const user = users[Math.floor(Math.random() * 3)]
+      const car = cars[Math.floor(Math.random() * 9)]
+
+      await prisma.rental.create({
+        data: {
+          user: {
+            connect: {
+              id: user.id
+            }
+          },
+          car: {
+            connect: {
+              id: car.id
+            }
+          },
+          ...rental
+        }
+      })
+      console.log(
+        `---> ${user.name} | ${car.manufacturer.name} ${
+          car.model
+        } FROM ${format(rental.startDate as Date, 'MMM, do yyyy')} TO ${format(
+          rental.endDate as Date,
+          'MMM, do yyyy'
+        )} ✔️`
+      )
+    })
+  )
+}
+
 const main = async () => {
   dotenv.config()
 
@@ -69,6 +112,7 @@ const main = async () => {
   await seedManufacturers()
   await seedSpecifications()
   await seedCars()
+  await seedRentals()
 }
 
 main()
