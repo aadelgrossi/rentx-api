@@ -17,6 +17,9 @@ export class RentalService {
     return await this.prisma.rental.findMany({
       where: {
         userId
+      },
+      orderBy: {
+        startDate: 'desc'
       }
     })
   }
