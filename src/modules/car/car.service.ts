@@ -138,4 +138,17 @@ export class CarService {
 
     return topRentedCar
   }
+
+  async getDailyRateRange() {
+    const { min, max } = await this.prisma.car.aggregate({
+      min: {
+        dailyRate: true
+      },
+      max: {
+        dailyRate: true
+      }
+    })
+
+    return { min: min.dailyRate, max: max.dailyRate }
+  }
 }
