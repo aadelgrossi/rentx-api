@@ -21,6 +21,11 @@ type Car {
   updatedAt: DateTime!
 }
 
+type CarDailyRateRange {
+  max: Int!
+  min: Int!
+}
+
 input CarFilterArgs {
   fromDate: DateTime
   fuelType: FuelType
@@ -127,6 +132,7 @@ type Photo {
 type Query {
   car(id: String!): Car
   cars(filter: CarFilterArgs): [Car!]!
+  dailyRateRange: CarDailyRateRange!
   isEmailAvailable(email: String!): Boolean!
   me: User!
   rentals: [Rental!]!
