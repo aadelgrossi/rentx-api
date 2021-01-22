@@ -36,6 +36,8 @@ export class UserResolver {
     @UserEntity() user: User,
     @Args('data') newUserData: UpdateUserInput
   ) {
+    if (user.email === newUserData.email) delete newUserData.email
+
     return this.userService.updateUser(user.id, newUserData)
   }
 

@@ -1,4 +1,8 @@
-import { BadRequestException, Injectable } from '@nestjs/common'
+import {
+  BadRequestException,
+  ConflictException,
+  Injectable
+} from '@nestjs/common'
 import { User, Prisma } from '@prisma/client'
 
 import { PrismaService } from '../../services/prisma.service'
@@ -35,11 +39,21 @@ export class UserService {
     })
   }
 
-  async updateUser(userId: string, newUserData: UpdateUserInput) {
+  async updateUser(id: string, newUserData: UpdateUserInput) {
+    const { email } = newUserData
+
+    if (email) {
+      const emailTaken = await this.prisma.user.findFirst({
+        where: { email }
+      })
+
+      if (emailTaken) throw new ConflictException('Email is already in use')
+    }
+
     return this.prisma.user.update({
       data: newUserData,
       where: {
-        id: userId
+        id
       }
     })
   }
@@ -49,6 +63,10 @@ export class UserService {
     userPassword: string,
     changePassword: ChangePasswordInput
   ) {
+    if (changePassword.oldPassword === changePassword.newPassword) {
+      throw new ConflictException('New password cannot be equal to previous')
+    }
+
     const passwordValid = await this.passwordService.validatePassword(
       changePassword.oldPassword,
       userPassword
