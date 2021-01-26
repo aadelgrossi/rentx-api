@@ -24,6 +24,7 @@ module.exports = {
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
     'no-unused-vars': 'off',
+    'camelcase': 'off',
     "@typescript-eslint/no-unused-vars": [
       "warn",
       {

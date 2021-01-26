@@ -11,7 +11,7 @@ import { PrismaService } from 'src/services'
 
 import { CarService } from '../car/car.service'
 import { FavoriteCar } from '../car/models'
-import { ChangePasswordInput, UpdateUserInput } from './dto'
+import { ChangePasswordInput, UpdateUserInput, UpdateAvatarInput } from './dto'
 import { GqlAuthGuard } from './gql-auth.guard'
 import { User } from './models/user.model'
 import { UserEntity } from './user.decorator'
@@ -39,6 +39,14 @@ export class UserResolver {
     if (user.email === newUserData.email) delete newUserData.email
 
     return this.userService.updateUser(user.id, newUserData)
+  }
+
+  @Mutation(() => User)
+  async updateAvatar(
+    @UserEntity() user: User,
+    @Args('data') avatarData: UpdateAvatarInput
+  ) {
+    return this.userService.updateAvatar(user.id, avatarData.url)
   }
 
   @Mutation(() => User)

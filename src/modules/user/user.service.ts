@@ -58,6 +58,24 @@ export class UserService {
     })
   }
 
+  async updateAvatar(id: string, url: string) {
+    return this.prisma.user.update({
+      data: {
+        avatar: {
+          upsert: {
+            update: {
+              url
+            },
+            create: {
+              url
+            }
+          }
+        }
+      },
+      where: { id }
+    })
+  }
+
   async changePassword(
     userId: string,
     userPassword: string,
