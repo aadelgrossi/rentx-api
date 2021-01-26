@@ -119,6 +119,7 @@ type Mutation {
   refreshToken(token: String!): Token!
   signin(data: SigninInput!): Auth!
   signup(data: SignupInput!): Auth!
+  updateAvatar(data: UpdateAvatarInput!): User!
   updateUser(data: UpdateUserInput!): User!
 }
 
@@ -177,6 +178,10 @@ type Token {
 enum Transmission {
   auto
   manual
+}
+
+input UpdateAvatarInput {
+  url: String
 }
 
 input UpdateUserInput {
