@@ -23,7 +23,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'FuelType'
             }
           },
-          value: 'Gasolina'
+          value: 'gas'
         },
         {
           specification: {
@@ -90,7 +90,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'FuelType'
             }
           },
-          value: 'Gasolina'
+          value: 'gas'
         },
         {
           specification: {
@@ -157,7 +157,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'FuelType'
             }
           },
-          value: 'Gasolina'
+          value: 'gas'
         },
         {
           specification: {
@@ -224,7 +224,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'FuelType'
             }
           },
-          value: 'Gasolina'
+          value: 'gas'
         },
         {
           specification: {
@@ -291,7 +291,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'FuelType'
             }
           },
-          value: 'Gasolina'
+          value: 'gas'
         },
         {
           specification: {
@@ -358,7 +358,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'FuelType'
             }
           },
-          value: 'Gasolina'
+          value: 'gas'
         },
         {
           specification: {
@@ -425,7 +425,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'FuelType'
             }
           },
-          value: 'Gasolina'
+          value: 'gas'
         },
         {
           specification: {
@@ -492,7 +492,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'FuelType'
             }
           },
-          value: 'Gasolina'
+          value: 'gas'
         },
         {
           specification: {
@@ -559,7 +559,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'FuelType'
             }
           },
-          value: 'Gasolina'
+          value: 'gas'
         },
         {
           specification: {
@@ -626,7 +626,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'FuelType'
             }
           },
-          value: 'Álcool'
+          value: 'hybrid'
         },
         {
           specification: {
@@ -693,7 +693,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'FuelType'
             }
           },
-          value: 'Gasolina'
+          value: 'gas'
         },
         {
           specification: {
@@ -760,7 +760,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'FuelType'
             }
           },
-          value: 'Álcool'
+          value: 'hybrid'
         },
         {
           specification: {
@@ -827,7 +827,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'FuelType'
             }
           },
-          value: 'Gasolina'
+          value: 'gas'
         },
         {
           specification: {
@@ -894,7 +894,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'FuelType'
             }
           },
-          value: 'Gasolina'
+          value: 'gas'
         },
         {
           specification: {
@@ -961,7 +961,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'FuelType'
             }
           },
-          value: 'Gasolina'
+          value: 'gas'
         },
         {
           specification: {
@@ -1028,7 +1028,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'FuelType'
             }
           },
-          value: 'Álcool'
+          value: 'hybrid'
         },
         {
           specification: {
@@ -1095,7 +1095,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'FuelType'
             }
           },
-          value: 'Gasolina'
+          value: 'gas'
         },
         {
           specification: {
@@ -1162,7 +1162,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'FuelType'
             }
           },
-          value: 'Gasolina'
+          value: 'gas'
         },
         {
           specification: {
@@ -1229,7 +1229,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'FuelType'
             }
           },
-          value: 'Álcool'
+          value: 'hybrid'
         },
         {
           specification: {
@@ -1296,7 +1296,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'FuelType'
             }
           },
-          value: 'Gasolina'
+          value: 'gas'
         },
         {
           specification: {
@@ -1363,7 +1363,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'FuelType'
             }
           },
-          value: 'Elétrico'
+          value: 'electric'
         },
         {
           specification: {
@@ -1430,7 +1430,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'FuelType'
             }
           },
-          value: 'Álcool'
+          value: 'hybrid'
         },
         {
           specification: {
@@ -1497,7 +1497,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'FuelType'
             }
           },
-          value: 'Gasolina'
+          value: 'gas'
         },
         {
           specification: {
@@ -1564,7 +1564,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'FuelType'
             }
           },
-          value: 'Elétrico'
+          value: 'electric'
         },
         {
           specification: {
@@ -1631,7 +1631,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'FuelType'
             }
           },
-          value: 'Elétrico'
+          value: 'electric'
         },
         {
           specification: {
@@ -1698,7 +1698,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'FuelType'
             }
           },
-          value: 'Gasolina'
+          value: 'gas'
         },
         {
           specification: {
@@ -1765,7 +1765,7 @@ export const carsData: Prisma.CarCreateInput[] = [
               name: 'FuelType'
             }
           },
-          value: 'Gasolina'
+          value: 'gas'
         },
         {
           specification: {
