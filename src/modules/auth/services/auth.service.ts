@@ -8,7 +8,7 @@ import {
 } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
 import { JwtService } from '@nestjs/jwt'
-import { PrismaClientKnownRequestError } from '@prisma/client'
+import { Prisma } from '@prisma/client'
 import { SecurityConfig } from 'src/configs/config.interface'
 import { PrismaService } from 'src/services'
 
@@ -44,7 +44,7 @@ export class AuthService {
       })
     } catch (error) {
       if (
-        error instanceof PrismaClientKnownRequestError &&
+        error instanceof Prisma.PrismaClientKnownRequestError &&
         error.code === 'P2002'
       ) {
         throw new ConflictException(`Email ${payload.email} already in use.`)

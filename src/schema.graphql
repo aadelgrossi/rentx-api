@@ -181,7 +181,7 @@ enum Transmission {
 }
 
 input UpdateAvatarInput {
-  url: String
+  url: String!
 }
 
 input UpdateUserInput {

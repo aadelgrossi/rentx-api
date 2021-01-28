@@ -1,4 +1,4 @@
-import { Enumerable, Prisma } from '@prisma/client'
+import { Prisma } from '@prisma/client'
 
 export const nameContains = (content: string) =>
   content
@@ -19,5 +19,5 @@ export const nameContains = (content: string) =>
             }
           }
         ]
-      } as Enumerable<Prisma.CarWhereInput>)
+      } as Prisma.Enumerable<Prisma.CarWhereInput>)
     : {}

@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common'
-import { Prisma, PrismaClientKnownRequestError } from '@prisma/client'
+import { Prisma } from '@prisma/client'
 import { UserInputError, ValidationError } from 'apollo-server-express'
 import { differenceInDays } from 'date-fns'
 
@@ -13,7 +13,7 @@ import {
   createSpecifications
 } from './queries'
 
-interface CustomPrismaError extends PrismaClientKnownRequestError {
+interface CustomPrismaError extends Prisma.PrismaClientKnownRequestError {
   meta: {
     target: Array<string>
   }
