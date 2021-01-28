@@ -3,9 +3,9 @@ import { subDays } from 'date-fns'
 
 const today = new Date()
 
-export const rentalsData: Omit<
-  Prisma.RentalUncheckedCreateInput,
-  'carId' | 'userId'
+export const rentalsData: Pick<
+  Prisma.RentalCreateInput,
+  'startDate' | 'endDate'
 >[] = [
   {
     startDate: subDays(today, 180),
