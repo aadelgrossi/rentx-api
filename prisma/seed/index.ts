@@ -75,8 +75,8 @@ const seedRentals = async () => {
 
   return Promise.all(
     rentalsData.map(async rental => {
-      const user = users[Math.floor(Math.random() * 3)]
-      const car = cars[Math.floor(Math.random() * 9)]
+      const user = users[Math.floor(Math.random() * 4)]
+      const car = cars[Math.floor(Math.random() * 10)]
 
       await prisma.rental.create({
         data: {
