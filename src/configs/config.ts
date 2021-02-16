@@ -9,7 +9,6 @@ const config: Config = {
   },
   graphql: {
     playgroundEnabled: true,
-    introspection: true,
     debug: true,
     schemaDestination: './src/schema.graphql',
     sortSchema: true

@@ -8,7 +8,6 @@ export interface CorsConfig {
 
 export interface GraphqlConfig {
   playgroundEnabled: boolean
-  introspection: boolean
   debug: boolean
   schemaDestination: string
   sortSchema: boolean
