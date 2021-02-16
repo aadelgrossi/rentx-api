@@ -23,7 +23,8 @@
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "prisma:save": "npx prisma migrate dev --create-only --preview-feature",
     "prisma:migrate": "npx prisma migrate dev --preview-feature",
-    "prisma:studio": "npx prisma studio"
+    "prisma:studio": "npx prisma studio",
+    "prisma:migrate:prod": "npx prisma db push --preview-feature"
   },
   "dependencies": {
     "@nestjs/common": "^7.5.1",
@@ -45,7 +46,8 @@
     "passport-jwt": "^4.0.0",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
-    "rxjs": "^6.6.3"
+    "rxjs": "^6.6.3",
+    "throat": "^6.0.1"
   },
   "devDependencies": {
     "@nestjs/cli": "^7.5.1",
