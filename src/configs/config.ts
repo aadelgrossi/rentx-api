@@ -2,13 +2,14 @@ import { Config } from './config.interface'
 
 const config: Config = {
   nest: {
-    port: 3333
+    port: Number(process.env.PORT) || 3333
   },
   cors: {
     enabled: true
   },
   graphql: {
     playgroundEnabled: true,
+    introspection: true,
     debug: true,
     schemaDestination: './src/schema.graphql',
     sortSchema: true
