@@ -1,8 +1,10 @@
-# rentX
+# rentX (API)
 
-GraphQL API/server module for rentX application.
+GraphQL API/server module for rentX application.   
 
-Developed with
+Check the mobile app repo [here](https://github.com/aadelgrossi/rentx-mobile).
+
+Developed using
 
 - [TypeScript](https://www.typescriptlang.org/)
 - [NestJS](https://nestjs.com/)
@@ -10,14 +12,17 @@ Developed with
 - [Prisma](https://www.prisma.io/)
 - [PassportJS](http://www.passportjs.org/)
 
-## Install & config steps
+## :wrench: Install & config steps
 
 ```bash
 $ git clone https://github.com/aadelgrossi/rentx-api.git
+```
 
-# Rename .env.example to .env and u
+### Rename [.env.example](./.env.example) to .env and u
+```bash
 $ mv .env.example .env
 ```
+
 ### Update the environment variables to match your PG instance config (example is previously filled with defaults)
 ```env
 POSTGRES_USER=postgres  
@@ -43,8 +48,9 @@ $ yarn prisma:migrate
 ```bash
 $ yarn seed
 ```
-### Run the server
-```
+# :arrow_forward: Start the server
+
+```bash
 $ yarn start:dev
 ```
 
