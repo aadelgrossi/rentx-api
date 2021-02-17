@@ -10,28 +10,45 @@ Developed with
 - [Prisma](https://www.prisma.io/)
 - [PassportJS](http://www.passportjs.org/)
 
-## Installation
+## Install & config steps
 
-Rename .env.example to .env and update to your environment variables (your DB config, default is Postgres / random string/hash for JWT_SECRET)
 ```bash
+$ git clone https://github.com/aadelgrossi/rentx-api.git
+
+# Rename .env.example to .env and u
 $ mv .env.example .env
 ```
+### Update the environment variables to match your PG instance config (example is previously filled with defaults)
+```env
+POSTGRES_USER=postgres  
+POSTGRES_PASSWORD=postgres  
+POSTGRES_DB=rentx  
 
-Install dependencies
-```bash
-$ yarn
+DB_HOST=localhost
+DB_PORT=5432
+DB_SCHEMA=public
 ```
 
-Run migrations and generate Prisma client
+### Install dependencies, generate Prisma client and build 
+
 ```bash
-$ yarn prisma:apply
+$ yarn install
+```
+### Run migrations
+```bash
+$ yarn prisma:migrate
 ```
 
-## Running the app
-
+### Seed database (optional)
+```bash
+$ yarn seed
+```
+### Run the server
 ```
 $ yarn start:dev
 ```
+
+GraphQL playground will be available at http://localhost:3333/graphql
 
 ## License
 [MIT](LICENSE)
