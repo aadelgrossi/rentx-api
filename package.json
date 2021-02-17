@@ -1,7 +1,7 @@
 {
   "name": "rentx-api",
-  "version": "0.1.0",
-  "description": "",
+  "version": "1.0.0",
+  "description": "GraphQL API/server module for rentX application.",
   "author": "Andre Grossi",
   "private": true,
   "license": "MIT",
