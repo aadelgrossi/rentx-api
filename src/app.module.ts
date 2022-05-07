@@ -6,11 +6,13 @@ import config from './configs/config'
 import { GraphqlConfig } from './configs/config.interface'
 import { AuthModule, CarModule, UserModule, RentalModule } from './modules'
 import { AppService } from './services'
+import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true, load: [config] }),
-    GraphQLModule.forRootAsync({
+    GraphQLModule.forRootAsync<ApolloDriverConfig>({
+      driver: ApolloDriver,
       useFactory: async (configService: ConfigService) => {
         const graphqlConfig = configService.get<GraphqlConfig>('graphql')
         return {
