@@ -11,77 +11,82 @@ generator client {
 }
 
 model User {
-  id                  String   @id @default(cuid())
-  email               String   @unique
-  name                String
-  password            String
-  avatarId            String?
-  avatar              Photo? @relation(fields: [avatarId], references: [id])     
-  admin               Boolean @default(false)
-  createdAt           DateTime @default(now())
-  updatedAt           DateTime @updatedAt
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String
+  password  String
+  avatarId  String?
+  avatar    Photo?   @relation(fields: [avatarId], references: [id])
+  admin     Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  Rental    Rental[]
 }
 
 model Specification {
-  id                  String @id @default(cuid())
-  name                String @unique
-  icon                String
-  isIconValue         Boolean @default(false)
-  cars                CarSpecification[]
-  createdAt           DateTime @default(now())
-  updatedAt           DateTime @updatedAt
+  id          String             @id @default(cuid())
+  name        String             @unique
+  icon        String
+  isIconValue Boolean            @default(false)
+  cars        CarSpecification[]
+  createdAt   DateTime           @default(now())
+  updatedAt   DateTime           @updatedAt
 }
 
 model CarManufacturer {
-  id                  String @id @default(cuid())
-  name                String @unique
-  createdAt           DateTime @default(now())
-  updatedAt           DateTime @updatedAt
+  id        String   @id @default(cuid())
+  name      String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  Car       Car[]
 }
 
 model Photo {
-  id                  String @id @default(cuid())
-  url                 String
-  createdAt           DateTime @default(now())
-  updatedAt           DateTime @updatedAt
+  id        String   @id @default(cuid())
+  url       String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  User      User[]
+  Car       Car[]
 }
 
 model Car {
-  id                  String @id @default(cuid())
-  model               String
-  manufacturerId      String
-  manufacturer        CarManufacturer @relation(fields: [manufacturerId], references: [id])
-  dailyRate           Int
-  photoId             String?
-  photo               Photo? @relation(fields: [photoId], references: [id])
-  specifications      CarSpecification[]
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
+  id             String             @id @default(cuid())
+  model          String
+  manufacturerId String
+  manufacturer   CarManufacturer    @relation(fields: [manufacturerId], references: [id])
+  dailyRate      Int
+  photoId        String?
+  photo          Photo?             @relation(fields: [photoId], references: [id])
+  specifications CarSpecification[]
+  createdAt      DateTime           @default(now())
+  updatedAt      DateTime           @updatedAt
 
-  @@unique([model,manufacturerId])
+  @@unique([model, manufacturerId])
+  Rental Rental[]
 }
 
 model CarSpecification {
-  id                  String @id @default(cuid())
-  specificationId     String
-  specification       Specification @relation(fields: [specificationId], references: [id])
-  carId               String
-  car                 Car @relation(fields: [carId], references: [id])
-  value               String
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
+  id              String        @id @default(cuid())
+  specificationId String
+  specification   Specification @relation(fields: [specificationId], references: [id])
+  carId           String
+  car             Car           @relation(fields: [carId], references: [id])
+  value           String
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
 
   @@unique([specificationId, carId])
 }
 
 model Rental {
-  id                  String @id @default(cuid())
-  carId               String
-  car                 Car @relation(fields: [carId], references: [id])
-  userId              String
-  user                User @relation(fields: [userId], references: [id])
-  startDate           DateTime
-  endDate             DateTime
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
+  id        String   @id @default(cuid())
+  carId     String
+  car       Car      @relation(fields: [carId], references: [id])
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  startDate DateTime
+  endDate   DateTime
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
