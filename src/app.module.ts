@@ -19,6 +19,7 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
           buildSchemaOptions: {
             numberScalarMode: 'integer'
           },
+          introspection: true,
           sortSchema: graphqlConfig.sortSchema,
           autoSchemaFile:
             graphqlConfig.schemaDestination || './src/schema.graphql',
