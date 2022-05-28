@@ -1,46 +1,47 @@
-import { Prisma } from '@prisma/client'
-
 interface AvailabilityWhereArgs {
   fromDate: Date
   toDate: Date
 }
 
-export const availableBetween = ({ fromDate, toDate }: AvailabilityWhereArgs) =>
-  fromDate && toDate
-    ? ({
-        Rental: {
-          none: {
-            AND: [
+export const availableBetween = ({
+  fromDate,
+  toDate
+}: AvailabilityWhereArgs) => {
+  if (!(fromDate && toDate)) return {}
+  return {
+    Rental: {
+      none: {
+        AND: [
+          {
+            OR: [
               {
-                OR: [
-                  {
-                    startDate: {
-                      lte: fromDate
-                    }
-                  },
-                  {
-                    startDate: {
-                      lte: toDate
-                    }
-                  }
-                ]
+                startDate: {
+                  lte: fromDate
+                }
               },
               {
-                OR: [
-                  {
-                    endDate: {
-                      gte: toDate
-                    }
-                  },
-                  {
-                    endDate: {
-                      gte: fromDate
-                    }
-                  }
-                ]
+                startDate: {
+                  lte: toDate
+                }
+              }
+            ]
+          },
+          {
+            OR: [
+              {
+                endDate: {
+                  gte: toDate
+                }
+              },
+              {
+                endDate: {
+                  gte: fromDate
+                }
               }
             ]
           }
-        }
-      } as Prisma.CarWhereInput)
-    : {}
+        ]
+      }
+    }
+  }
+}

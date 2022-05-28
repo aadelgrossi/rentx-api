@@ -10,8 +10,8 @@ export enum FuelType {
 }
 
 export enum Transmission {
-  auto = 'auto',
-  manual = 'manual'
+  auto = 'Automático',
+  manual = 'Manual'
 }
 
 registerEnumType(FuelType, { name: 'FuelType' })
