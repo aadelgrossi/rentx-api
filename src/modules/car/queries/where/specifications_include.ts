@@ -1,16 +1,16 @@
+import { Prisma } from '@prisma/client'
+
 import { FuelType, Transmission } from '../../models'
 import { whereFuelType } from './fuel_type'
 import { whereTransmission } from './transmission'
 
-interface SpecificationWhereArgs {
-  fuelType: FuelType
-  transmission: Transmission
-}
+type SpecificationWhereArgs = { fuelType: FuelType; transmission: Transmission }
+type SpecificationFilter = (
+  args: SpecificationWhereArgs
+) => Prisma.CarWhereInput
 
-export const specificationsInclude = ({
-  fuelType,
-  transmission
-}: SpecificationWhereArgs) => {
+export const specificationsInclude: SpecificationFilter = args => {
+  const { fuelType, transmission } = args
   if (transmission && fuelType) {
     return {
       AND: [

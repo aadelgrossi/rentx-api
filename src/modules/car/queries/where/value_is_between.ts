@@ -1,14 +1,12 @@
-interface MinMaxValueArgs {
-  min: number
-  max: number
-}
+import { Prisma } from '@prisma/client'
 
-export const valueIsBetween = ({ min, max }: MinMaxValueArgs) => {
-  if (!min && !max) return {}
+type RateArgs = { min: number; max: number }
+type RateFilter = (args: RateArgs) => Prisma.CarWhereInput
+
+export const valueIsBetween: RateFilter = args => {
+  const { min: gte, max: lte } = args
+  if (!gte && !lte) return {}
   return {
-    dailyRate: {
-      gte: min,
-      lte: max
-    }
+    dailyRate: { gte, lte }
   }
 }

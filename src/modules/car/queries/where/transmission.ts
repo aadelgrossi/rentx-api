@@ -1,6 +1,12 @@
+import { Prisma } from '@prisma/client'
+
 import { BaseSpecs, Transmission } from '../../models'
 
-export const whereTransmission = (value: Transmission) => {
+type TransmissionFilter = (
+  args: Transmission
+) => Prisma.CarSpecificationWhereInput
+
+export const whereTransmission: TransmissionFilter = value => {
   if (!value) return {}
   return {
     specification: {

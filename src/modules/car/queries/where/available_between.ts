@@ -1,12 +1,10 @@
-interface AvailabilityWhereArgs {
-  fromDate: Date
-  toDate: Date
-}
+import { Prisma } from '@prisma/client'
 
-export const availableBetween = ({
-  fromDate,
-  toDate
-}: AvailabilityWhereArgs) => {
+type AvailabilityWhereArgs = { fromDate: Date; toDate: Date }
+type AvailabilityFilter = (args: AvailabilityWhereArgs) => Prisma.CarWhereInput
+
+export const availableBetween: AvailabilityFilter = args => {
+  const { fromDate, toDate } = args
   if (!(fromDate && toDate)) return {}
   return {
     Rental: {
